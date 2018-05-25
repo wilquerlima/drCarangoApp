@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DrCarango</string>
+    <string name="txtIntro">Bem vindo ao Dr Carango!\nAqui você vai encontrar a melhor maneira de concertar seu veículo.</string>
+
+    <!-- Labels Activitys -->
+    <string name="label_login">Login</string>
+    <string name="label_cadastro">Cadastro</string>
+
 </resources>

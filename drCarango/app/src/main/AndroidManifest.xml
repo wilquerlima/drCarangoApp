@@ -18,6 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".gui.LoginActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/label_login"
+            android:parentActivityName=".gui.IntroduçãoActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".gui.CadastroActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/label_cadastro"
+            android:parentActivityName=".gui.IntroduçãoActivity"
+            android:theme="@style/AppTheme"/>
+
+
     </application>
 
 </manifest>
