@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import doutor.carangoapp.R;
 
-public class SplashActivity extends AppCompatActivity {
+public class IntroduçãoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_introducao);
     }
 }
