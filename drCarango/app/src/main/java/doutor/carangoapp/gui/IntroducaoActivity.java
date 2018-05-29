@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import doutor.carangoapp.R;
 
-public class IntroduçãoActivity extends AppCompatActivity implements View.OnClickListener {
+public class IntroducaoActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btn_entrar, btn_cadastrar;
 

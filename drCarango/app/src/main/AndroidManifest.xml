@@ -10,28 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".gui.IntroduçãoActivity"
+            android:name=".gui.IntroducaoActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".gui.LoginActivity"
             android:screenOrientation="portrait"
             android:label="@string/label_login"
-            android:parentActivityName=".gui.IntroduçãoActivity"
+            android:parentActivityName=".gui.IntroducaoActivity"
             android:theme="@style/AppTheme"/>
 
         <activity android:name=".gui.CadastroActivity"
             android:screenOrientation="portrait"
             android:label="@string/label_cadastro"
-            android:parentActivityName=".gui.IntroduçãoActivity"
+            android:parentActivityName=".gui.IntroducaoActivity"
             android:theme="@style/AppTheme"/>
 
-
+        <activity android:name=".gui.SugestoesActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/label_menu"
+            android:parentActivityName=".gui.LoginActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
