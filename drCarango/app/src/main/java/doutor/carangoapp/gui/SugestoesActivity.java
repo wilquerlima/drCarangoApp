@@ -18,7 +18,8 @@ import doutor.carangoapp.R;
 public class SugestoesActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-   private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
+
+    private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         imCategory_Revisao.setOnClickListener(this);
         imCategory_Bateria.setOnClickListener(this);
         imCategory_Reparo.setOnClickListener(this);
+
 
     }
 
