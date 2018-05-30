@@ -11,29 +11,28 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".gui.IntroducaoActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity android:name=".gui.LoginActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".gui.LoginActivity"
             android:label="@string/label_login"
             android:parentActivityName=".gui.IntroducaoActivity"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".gui.CadastroActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".gui.CadastroActivity"
             android:label="@string/label_cadastro"
             android:parentActivityName=".gui.IntroducaoActivity"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".gui.SugestoesActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".gui.SugestoesActivity"
             android:label="@string/label_menu"
             android:parentActivityName=".gui.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
