@@ -47,10 +47,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="cropped" value="true" />
-                                      <entry key="iconShape" value="CIRCLE" />
-                                      <entry key="imageAsset" value="C:\Users\Pichau\ImageSugestoes\category- bateria.png" />
-                                      <entry key="outputName" value="ic_category_bateria" />
+                                      <entry key="iconShape" value="NONE" />
+                                      <entry key="imageAsset" value="C:\Users\Pichau\ImageSugestoes\car-repair.png" />
+                                      <entry key="outputName" value="ic_reparo" />
                                     </map>
                                   </option>
                                 </PersistentState>

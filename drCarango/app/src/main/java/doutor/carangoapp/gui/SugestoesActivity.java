@@ -17,21 +17,24 @@ import doutor.carangoapp.R;
 
 public class SugestoesActivity extends AppCompatActivity implements View.OnClickListener{
 
-   private ImageButton imCategory_Oil,imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
+
+
+    private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sugestoes);
 
-        imCategory_Bateria=findViewById(R.id.im_category_bateria);
-        imCategory_Reparo=findViewById(R.id.im_category_reparo);
-        imCategory_Revisao=findViewById(R.id.im_category_revisao);
-        imCategory_Oil=findViewById(R.id.im_category_oil);
+        imCategory_Bateria=findViewById(R.id.v_category_bateria);
+        imCategory_Reparo=findViewById(R.id.v_category_reparo);
+        imCategory_Revisao=findViewById(R.id.v_category_revisao);
+        vCategory_Oil=findViewById(R.id.v_category_oil);
 
-        imCategory_Oil.setOnClickListener(this);
+        vCategory_Oil.setOnClickListener(this);
         imCategory_Revisao.setOnClickListener(this);
         imCategory_Bateria.setOnClickListener(this);
         imCategory_Reparo.setOnClickListener(this);
+
 
     }
 
@@ -63,22 +66,22 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         String TAG=this.getClass().getName();
         switch (view.getId()){
 
-            case R.id.im_category_oil:
+            case R.id.v_category_oil:
                 mSugestao.setText("Botao oleo");
                 Log.d(TAG,"Botao Oleo");
                 break;
 
-            case R.id.im_category_reparo:
+            case R.id.v_category_reparo:
                 mSugestao.setText("Botao reparo");
                 Log.d(TAG,"Botao reparo");
                 break;
 
-            case R.id.im_category_revisao:
+            case R.id.v_category_revisao:
                 mSugestao.setText("Botao revisao");
                 Log.d(TAG,"Botao revisao");
                 break;
 
-            case R.id.im_category_bateria:
+            case R.id.v_category_bateria:
                 mSugestao.setText("Botao bateria");
                 Log.d(TAG,"Botao bateria");
                 break;
