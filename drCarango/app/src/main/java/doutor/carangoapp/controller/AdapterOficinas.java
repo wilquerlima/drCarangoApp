@@ -1,4 +1,4 @@
-package doutor.carangoapp.gui;
+package doutor.carangoapp.controller;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,8 +15,17 @@ import java.util.Random;
 
 import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
+import doutor.carangoapp.gui.OficinasViewHolder;
 
 public class AdapterOficinas extends RecyclerView.Adapter<OficinasViewHolder> {
+
+    public ArrayList<BaseEstabelecimento> getmOficinas() {
+        return mOficinas;
+    }
+
+    public void setmOficinas(ArrayList<BaseEstabelecimento> mOficinas) {
+        this.mOficinas = mOficinas;
+    }
 
     private ArrayList<BaseEstabelecimento> mOficinas;
 
@@ -40,9 +49,9 @@ public class AdapterOficinas extends RecyclerView.Adapter<OficinasViewHolder> {
         holder.getmMediaAvaliacoes().setText(Double.toString(oficina.getRankingServico()));
         holder.getmNumeroAmigosEmComum().setText( (r.nextInt(100))+" amigos em comum");
         holder.getmNumeroComentarios().setText( " ("+ r.nextInt(100)+ ")");
-
         holder.getmNumeroAvaliacoes().setText(" ("+Integer.toString (r.nextInt(100))+")");
 
+        //gera randomicamente cor para circulo na view
         GradientDrawable background=(GradientDrawable) holder.getmCircleOficinaList().getBackground();
         background.setColor(Color.argb(255,r.nextInt(256),r.nextInt(256),r.nextInt(256)));
 

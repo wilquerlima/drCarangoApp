@@ -69,9 +69,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\Pichau\ImageSugestoes\car-repair.png" />
-                                      <entry key="outputName" value="ic_comentbubble" />
+                                      <entry key="imageAsset" value="C:\Users\Pichau\Downloads\filter-icon.png" />
+                                      <entry key="outputName" value="ic_filter" />
                                     </map>
                                   </option>
                                 </PersistentState>

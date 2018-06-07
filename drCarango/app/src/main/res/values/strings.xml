@@ -100,5 +100,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="distancia">distância</string>
+    <string name="preco">preço</string>
+    <string name="agilidade">agilidade</string>
 
 </resources>
