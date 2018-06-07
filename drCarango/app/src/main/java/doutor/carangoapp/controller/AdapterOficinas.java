@@ -1,6 +1,9 @@
 package doutor.carangoapp.gui;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.IntegerRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,7 +41,10 @@ public class AdapterOficinas extends RecyclerView.Adapter<OficinasViewHolder> {
         holder.getmNumeroAmigosEmComum().setText( (r.nextInt(100))+" amigos em comum");
         holder.getmNumeroComentarios().setText( " ("+ r.nextInt(100)+ ")");
 
-        holder.getmNumeroAvaliacoes().setText(Integer.toString (r.nextInt(100))) ;
+        holder.getmNumeroAvaliacoes().setText(" ("+Integer.toString (r.nextInt(100))+")");
+
+        GradientDrawable background=(GradientDrawable) holder.getmCircleOficinaList().getBackground();
+        background.setColor(Color.argb(255,r.nextInt(256),r.nextInt(256),r.nextInt(256)));
 
 
     }
