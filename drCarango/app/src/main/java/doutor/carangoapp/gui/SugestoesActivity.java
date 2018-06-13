@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -18,7 +19,8 @@ import doutor.carangoapp.R;
 public class SugestoesActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-   private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
+
+    private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         imCategory_Revisao.setOnClickListener(this);
         imCategory_Bateria.setOnClickListener(this);
         imCategory_Reparo.setOnClickListener(this);
+
 
     }
 
@@ -65,23 +68,19 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()){
 
             case R.id.v_category_oil:
-                mSugestao.setText("Botao oleo");
-                Log.d(TAG,"Botao Oleo");
+                startActivity(new Intent(this,ListaOficinasActivity.class));
                 break;
 
             case R.id.v_category_reparo:
-                mSugestao.setText("Botao reparo");
-                Log.d(TAG,"Botao reparo");
+                startActivity(new Intent(this,ListaOficinasActivity.class));
                 break;
 
             case R.id.v_category_revisao:
-                mSugestao.setText("Botao revisao");
-                Log.d(TAG,"Botao revisao");
+                startActivity(new Intent(this,ListaOficinasActivity.class));
                 break;
 
             case R.id.v_category_bateria:
-                mSugestao.setText("Botao bateria");
-                Log.d(TAG,"Botao bateria");
+                startActivity(new Intent(this,ListaOficinasActivity.class));
                 break;
 
         }

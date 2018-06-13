@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp">
+
+        <TextView
+            android:id="@+id/circle_oficina_list"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_margin="12dp"
+            android:background="@drawable/circle_oficina_icone"
+            android:gravity="center"
+            android:padding="2dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_nome_oficina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/circle_oficina_list"
+            android:fontFamily="sans-serif"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/iv_avaliacoes_estrelas"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_below="@id/tv_nome_oficina"
+            android:layout_toEndOf="@id/circle_oficina_list"
+            android:contentDescription="stars_of_oficina"
+            android:src="@mipmap/ic_star" />
+
+        <TextView
+            android:id="@+id/tv_media_avaliacoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_nome_oficina"
+            android:layout_toEndOf="@+id/iv_avaliacoes_estrelas" />
+
+        <TextView
+            android:id="@+id/tv_numero_avaliacoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_nome_oficina"
+            android:layout_marginLeft="4dp"
+            android:layout_toEndOf="@id/tv_media_avaliacoes"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/iv_comment_bubble"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/iv_avaliacoes_estrelas"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/circle_oficina_list"
+            android:contentDescription="comment_bubble"
+            android:src="@mipmap/ic_comentbubble" />
+
+        <TextView
+            android:id="@+id/tv_numero_comentarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_avaliacoes_estrelas"
+            android:layout_toEndOf="@id/iv_comment_bubble" />
+
+
+        <ImageView
+            android:id="@+id/iv_amigos_em_comum"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/iv_avaliacoes_estrelas"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/tv_numero_comentarios"
+            android:src="@mipmap/ic_friends"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_numero_amigos_em_comum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_avaliacoes_estrelas"
+            android:layout_toEndOf="@+id/iv_amigos_em_comum" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
