@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +16,7 @@ import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.controller.AdapterOficinas;
 
-public class ListaOficinasActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
+public class ListaOficinasActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener,AdapterOficinas.OnItemClickListener{
 
     private RecyclerView mRecyclerView;
     private AdapterOficinas mAdapterOficinas;
@@ -30,8 +31,8 @@ public class ListaOficinasActivity extends AppCompatActivity implements Compound
 
         mRecyclerView.setLayoutManager(manager);
 
-        mAdapterOficinas=SetupAdapterDummy();
-
+        mAdapterOficinas=new AdapterOficinas(this);
+        mAdapterOficinas.setmOficinas(SetupAdapterTest());
         mRecyclerView.setAdapter(mAdapterOficinas);
 
         mRecyclerView.addItemDecoration(
@@ -41,7 +42,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements Compound
 
     }
 
-    private AdapterOficinas SetupAdapterDummy() {
+    private ArrayList<BaseEstabelecimento> SetupAdapterTest() {
 
         ArrayList<BaseEstabelecimento> listaOficinas=new ArrayList<BaseEstabelecimento>();
         BaseEstabelecimento oficina1=new BaseEstabelecimento();
@@ -82,7 +83,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements Compound
         listaOficinas.add(oficina9);
 
 
-        return new AdapterOficinas(listaOficinas);
+        return listaOficinas;
     }
 
 
@@ -104,5 +105,12 @@ public class ListaOficinasActivity extends AppCompatActivity implements Compound
 
 
         }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent perfilOficinaIntent=new Intent(this,PerfilOficinaActivity.class);
+        perfilOficinaIntent.putExtra("idOficina",Integer.toString(position));
+        startActivity(perfilOficinaIntent);
     }
 }

@@ -17,9 +17,11 @@ public class BaseEstabelecimento {
     private String numero;
     private String bairro;
     private String cep;
+    private String cidade;
     private String estado;
     private String pais;
     private String complemento;
+    private String telefone;
     private double rankingAgilidade;
     private double rankingCustoBeneficio;
     private double rankingServico;
@@ -30,6 +32,14 @@ public class BaseEstabelecimento {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -130,6 +140,14 @@ public class BaseEstabelecimento {
 
     public double getRankingAgilidade() {
         return rankingAgilidade;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public void setRankingAgilidade(double rankingAgilidade) {

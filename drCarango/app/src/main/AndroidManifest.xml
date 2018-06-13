@@ -37,6 +37,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".gui.ListaOficinasActivity"></activity>
+        <activity
+            android:name=".gui.PerfilOficinaActivity"
+            android:parentActivityName=".gui.SugestoesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
