@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".gui.IntroducaoActivity">
-
-    <item android:id="@+id/notification_sugestao_icon"
+    tools:context="doutor.carangoapp.gui.PerfilOficinaActivity">
+<item
     android:orderInCategory="1"
+    android:id="@+id/item_menu_notifications"
     android:icon="@drawable/ic_notifications_black_24dp"
-    app:showAsAction="ifRoom"
-    android:title="@string/notification"/>
+    app:showAsAction="always"
+    android:title="@string/notifications_menu"
+    />
 </menu>
