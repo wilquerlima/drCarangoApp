@@ -44,7 +44,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
 
         MenuInflater inflater=getMenuInflater();
 
-        inflater.inflate(R.menu.app_bar,menu);
+        inflater.inflate(R.menu.menu_sugestoes_oficinas,menu);
 
         return true;
     }
@@ -53,8 +53,8 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
 
-        if(id==R.menu.app_bar){
-            //do something
+        if(id==R.id.notification_sugestao_icon){
+            //exibe as notificacoes
         }
 
         return super.onOptionsItemSelected(item);

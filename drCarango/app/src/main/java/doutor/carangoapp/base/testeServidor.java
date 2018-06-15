@@ -5,6 +5,15 @@ import java.util.ArrayList;
 public class testeServidor {
 
     private ArrayList<BaseEstabelecimento> estabelecimentos;
+    private ArrayList<BaseComentario> comentarios;
+
+    public ArrayList<BaseComentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(ArrayList<BaseComentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 
     public ArrayList<BaseEstabelecimento> getEstabelecimentos() {
         return estabelecimentos;
@@ -16,6 +25,20 @@ public class testeServidor {
 
     public testeServidor(){
 
+    }
+    public void setUpComentariosTeste(){
+        ArrayList<BaseComentario> coments=new ArrayList<>();
+        BaseComentario coment1=new BaseComentario(1,1,"Thiago Felix","Oficina legal.");
+        BaseComentario coment2=new BaseComentario(2,2,"Bela","Bom mecânmico");
+        BaseComentario coment3=new BaseComentario(3,3,"Rold Felix","Cool, very nice");
+        BaseComentario coment4=new BaseComentario(4,4,"Guilherme ","não gostei :/");
+        BaseComentario coment5=new BaseComentario(5,5,"Neymar","atendimento rápido");
+        coments.add(coment1);
+        coments.add(coment2);
+        coments.add(coment3);
+        coments.add(coment4);
+        coments.add(coment5);
+        this.comentarios=coments;
     }
 
     public void SetupEstabelecimentoTest() {
@@ -92,14 +115,14 @@ public class testeServidor {
         BaseEstabelecimento oficina7=new BaseEstabelecimento();
         oficina7.setNome("Lojão do Petróleo");
         oficina7.setRankingServico(3.23);
-        oficina6.setBairro("Dois Unidos");
-        oficina6.setCep("52-000000");
-        oficina6.setCidade("Recife");
-        oficina6.setComplemento("bloco A");
-        oficina6.setEstado("PE");
-        oficina6.setNumero("255");
-        oficina6.setRua("Avenida Beberibe");
-        oficina6.setTelefone("81 3555 3555");
+        oficina7.setBairro("Dois Unidos");
+        oficina7.setCep("52-000000");
+        oficina7.setCidade("Recife");
+        oficina7.setComplemento("bloco A");
+        oficina7.setEstado("PE");
+        oficina7.setNumero("255");
+        oficina7.setRua("Avenida Beberibe");
+        oficina7.setTelefone("81 3555 3555");
         BaseEstabelecimento oficina8=new BaseEstabelecimento();
         oficina8.setNome("Biauto");
         oficina8.setRankingServico(2.45);

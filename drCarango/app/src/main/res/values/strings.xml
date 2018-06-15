@@ -103,5 +103,7 @@
     <string name="distancia">distância</string>
     <string name="preco">preço</string>
     <string name="agilidade">agilidade</string>
+    <string name="notifications_menu">notifications</string>
+    <string name="oficina_parceira_texto">Oficina parceira e aprovada pelo Doutor Carango</string>
 
 </resources>

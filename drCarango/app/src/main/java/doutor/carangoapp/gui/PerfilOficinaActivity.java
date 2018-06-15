@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,12 +36,14 @@ public class PerfilOficinaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         testeServidor servidor=new testeServidor();
         servidor.SetupEstabelecimentoTest();
-        ArrayList<BaseComentario> coments=new ArrayList<>();
+        servidor.setUpComentariosTeste();
+        ArrayList<BaseComentario> coments=servidor.getComentarios();
         mComentariosAdapter=new AdapterComentsOficina(coments);
 
         int posisao= Integer.parseInt(getIntent().getCharSequenceExtra("idOficina").toString());
         mOficina=servidor.getEstabelecimentos().get(posisao);
         this.setTitle(mOficina.getNome());
+
 
 
         setContentView(R.layout.activity_pefiloficina);
@@ -61,25 +66,61 @@ public class PerfilOficinaActivity extends AppCompatActivity {
         mRecyclerViewComenarios.setLayoutManager(manager);
         mRecyclerViewComenarios.setAdapter(mComentariosAdapter);
 
-        mRecyclerViewComenarios.addItemDecoration(
-                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-
 
     }
 
     private void setEnderecoOficinaOnTextView() {
-        tv_EnderecoOficina.append(mOficina.getRua());
-        tv_EnderecoOficina.append(", ");
-        tv_EnderecoOficina.append(mOficina.getNumero());
-        tv_EnderecoOficina.append(", ");
-        tv_EnderecoOficina.append(mOficina.getComplemento());
-        tv_EnderecoOficina.append(", ");
-        tv_EnderecoOficina.append(mOficina.getBairro());
-        tv_EnderecoOficina.append(", ");
-        tv_EnderecoOficina.append(mOficina.getCidade());
-        tv_EnderecoOficina.append(", ");
-        tv_EnderecoOficina.append(mOficina.getEstado());
+        String rua=mOficina.getRua();
+        if(rua!=null){
+            tv_EnderecoOficina.append(rua);
+            tv_EnderecoOficina.append(", ");
+        }
+        String numero=mOficina.getNumero();
+        if(rua!=null){
+            tv_EnderecoOficina.append(numero);
+            tv_EnderecoOficina.append(", ");
+        }
+        String complemento=mOficina.getComplemento();
+        if(rua!=null){
+            tv_EnderecoOficina.append(complemento);
+            tv_EnderecoOficina.append(", ");
+        }
+        String bairro=mOficina.getBairro();
+        if(rua!=null){
+            tv_EnderecoOficina.append(bairro);
+            tv_EnderecoOficina.append(", ");
+        }
+        String cidade=mOficina.getCidade();
+        if(rua!=null){
+            tv_EnderecoOficina.append(cidade);
+            tv_EnderecoOficina.append(", ");
+        }
+        String estado=mOficina.getEstado();
+        if(rua!=null){
+            tv_EnderecoOficina.append(estado);
+            tv_EnderecoOficina.append(", ");
+        }
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.perfil_oficina_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+
+        if(id==R.id.item_menu_notifications){
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public AdapterComentsOficina getmComentariosAdapter() {
