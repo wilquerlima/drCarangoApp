@@ -29,6 +29,8 @@
             android:backgroundTintMode="src_over"
             android:contentDescription="oficina_foto"
             android:fadingEdge="none"
+            android:focusable="auto"
+            android:focusableInTouchMode="true"
             android:padding="0dp" />
 
         <TextView
@@ -138,7 +140,7 @@
                     android:layout_below="@id/v_line_divisor_2"
                     android:layout_margin="15dp"
                     android:src="@mipmap/ic_friends"
-                    android:visibility="invisible"/>
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_amigos_visitaram"
@@ -151,7 +153,7 @@
                     android:text="Frequentado por 9 amigos"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:visibility="invisible"/>
+                    android:visibility="gone" />
 
                 <View
                     android:id="@+id/v_line_divisor_3"
@@ -160,7 +162,8 @@
                     android:layout_below="@id/iv_amigos_visitaram_icone"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@android:color/darker_gray"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/iv_oficina_parceira_perfil"
@@ -169,7 +172,7 @@
                     android:layout_below="@id/v_line_divisor_3"
                     android:layout_margin="15dp"
                     android:src="@mipmap/ic_checkparceira"
-                    android:visibility="invisible"/>
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_oficina_parceira"
@@ -182,7 +185,7 @@
                     android:text="@string/oficina_parceira_texto"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:visibility="invisible"/>
+                    android:visibility="gone" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 

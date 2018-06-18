@@ -1,11 +1,17 @@
 package doutor.carangoapp.gui;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
@@ -16,15 +22,28 @@ import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.controller.AdapterOficinas;
 
-public class ListaOficinasActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener,AdapterOficinas.OnItemClickListener{
+public class ListaOficinasActivity extends AppCompatActivity implements View.OnClickListener,AdapterOficinas.OnItemClickListener{
 
     private RecyclerView mRecyclerView;
     private AdapterOficinas mAdapterOficinas;
+    private ToggleButton mButtonViewPreco;
+    private ToggleButton mButtonViewAgilidade;
+    private ToggleButton mButtonViewDistancia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         setContentView(R.layout.activity_lista_oficina);
+
+        mButtonViewAgilidade= findViewById(R.id.btn_agilidade);
+        mButtonViewPreco=findViewById(R.id.btn_preco);
+        mButtonViewDistancia=findViewById(R.id.btn_distancia);
+        mButtonViewDistancia.setOnClickListener(this);
+        mButtonViewPreco.setOnClickListener(this);
+        mButtonViewAgilidade.setOnClickListener(this);
+        Intent intent=getIntent();
+        String title=intent.getStringExtra("categoria");
+        this.setTitle(title);
+
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
         mRecyclerView=findViewById(R.id.recycler_view_lista_oficinas);
@@ -82,30 +101,13 @@ public class ListaOficinasActivity extends AppCompatActivity implements Compound
         listaOficinas.add(oficina8);
         listaOficinas.add(oficina9);
 
-
         return listaOficinas;
     }
 
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        ToggleButton tooglebutton = (ToggleButton) buttonView;
-
-        switch (buttonView.getId()){
-            case R.id.btn_preco:{
-
-            }
-
-            case R.id.btn_agilidade:{
-
-            }
-            case R.id.btn_distancia:{
-
-            }
 
 
-        }
-    }
+
 
     @Override
     public void onItemClick(int position) {
@@ -113,4 +115,49 @@ public class ListaOficinasActivity extends AppCompatActivity implements Compound
         perfilOficinaIntent.putExtra("idOficina",Integer.toString(position));
         startActivity(perfilOficinaIntent);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_preco:{
+                mButtonViewDistancia.setChecked(false);
+                mButtonViewAgilidade.setChecked(false);
+                break;
+            }
+            case R.id.btn_agilidade:{
+                mButtonViewPreco.setChecked(false);
+                mButtonViewDistancia.setChecked(false);
+                break;            }
+            case R.id.btn_distancia:{
+                mButtonViewPreco.setChecked(false);
+                mButtonViewAgilidade.setChecked(false);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.app_bar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+
+        if(id==R.id.item_menu_notifications){
+
+            return true;
+        }
+        if(id==R.id.foto_perfil_menu){
+            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return true;
+    }
 }
+

@@ -7,4 +7,5 @@
         android:orderInCategory="1"
         android:title="@string/notifications_menu"
         app:showAsAction="ifRoom" />
+
 </menu>
