@@ -1,37 +1,44 @@
 package doutor.carangoapp.gui;
 
-import android.app.ActionBar;
 import android.content.Intent;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.List;
 
 import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.controller.AdapterOficinas;
+import doutor.carangoapp.controller.LoaderOficinasList;
 
-public class ListaOficinasActivity extends AppCompatActivity implements View.OnClickListener,AdapterOficinas.OnItemClickListener{
+public class ListaOficinasActivity extends AppCompatActivity implements View.OnClickListener,AdapterOficinas.OnItemClickListener,LoaderManager.LoaderCallbacks<String> {
 
     private RecyclerView mRecyclerView;
     private AdapterOficinas mAdapterOficinas;
     private ToggleButton mButtonViewPreco;
     private ToggleButton mButtonViewAgilidade;
     private ToggleButton mButtonViewDistancia;
+    private String JSonListOficinas;
+    private static String mCategoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //1-troca de oleo 2-reparos 3-bateria 4-revisao
+
         setContentView(R.layout.activity_lista_oficina);
 
         mButtonViewAgilidade= findViewById(R.id.btn_agilidade);
@@ -40,9 +47,19 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         mButtonViewDistancia.setOnClickListener(this);
         mButtonViewPreco.setOnClickListener(this);
         mButtonViewAgilidade.setOnClickListener(this);
+
+
         Intent intent=getIntent();
         String title=intent.getStringExtra("categoria");
+        String categoria=intent.getStringExtra("categoria");
+
+        getCategoriaClicada(categoria);
+
         this.setTitle(title);
+        Bundle args=new Bundle();
+        args.putString("categoria",mCategoria);
+
+        getSupportLoaderManager().initLoader(0, args, this).forceLoad();
 
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
@@ -58,6 +75,52 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public Loader<String> onCreateLoader(int id, Bundle args) {
+        return new LoaderOficinasList(this,args.getString("categoria"));
+    }
+
+    @Override
+    public void onLoadFinished(Loader<String> loader, String data) {
+        this.mAdapterOficinas.setmOficinas(getOficinasFromJson(data));
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<String> loader) {
+
+    }
+
+
+    private ArrayList<BaseEstabelecimento> getOficinasFromJson(String json){
+        ArrayList<BaseEstabelecimento> oficinas=new ArrayList<>();
+        try{
+            JSONArray jsonOficinas=new JSONArray(json);
+            JSONObject oficina;
+            for(int i=0;i<jsonOficinas.length();i++){
+                oficina=new JSONObject(jsonOficinas.getString(i));
+                BaseEstabelecimento estabelecimento=new BaseEstabelecimento();
+                estabelecimento.setNome(oficina.getString("nome"));
+                estabelecimento.setTelefone(oficina.getString("nome"));
+                estabelecimento.setRua(oficina.getString("nome"));
+                estabelecimento.setNumero(oficina.getString("nome"));
+                estabelecimento.setEstado(oficina.getString("nome"));
+                estabelecimento.setComplemento(oficina.getString("nome"));
+                estabelecimento.setCidade(oficina.getString("nome"));
+                estabelecimento.setCep(oficina.getString("nome"));
+                estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("nome")));
+                estabelecimento.setEmail(oficina.getString("email"));
+                oficinas.add(estabelecimento);
+            }
+
+            return oficinas;
+
+
+        }catch (Exception e ){
+            return null;
+        }
 
     }
 
@@ -104,7 +167,20 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         return listaOficinas;
     }
 
-
+    private void getCategoriaClicada(String categoria) {
+        if(categoria.equals("Troca de Óleo")){
+            mCategoria="Troca de Oleo";
+        }
+        if(categoria.equals("Reparo")){
+            mCategoria="Reparo";
+        }
+        if(categoria.equals("Revisão")){
+            mCategoria="Revisão";
+        }
+        if(categoria.equals("bateria")){
+            mCategoria="Bateria";
+        }
+    }
 
 
 
