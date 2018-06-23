@@ -106,6 +106,8 @@
     <string name="notifications_menu">notifications</string>
     <string name="oficina_parceira_texto">Oficina parceira e aprovada pelo Doutor Carango</string>
     <string name="foto_usuario">foto_usuario</string>
-    <string name="urlDrCarango">http://doutorcarango.kinghost.net</string>
+    <string name="urlDrCarango">http://doutorcarango.kinghost.net:21193</string>
+
+
 
 </resources>

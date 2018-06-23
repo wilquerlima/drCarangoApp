@@ -97,8 +97,10 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     private ArrayList<BaseEstabelecimento> getOficinasFromJson(String json){
         ArrayList<BaseEstabelecimento> oficinas=new ArrayList<>();
         try{
+
             JSONArray jsonOficinas=new JSONArray(json);
             JSONObject oficina;
+
             for(int i=0;i<jsonOficinas.length();i++){
                 oficina=new JSONObject(jsonOficinas.getString(i));
                 BaseEstabelecimento estabelecimento=new BaseEstabelecimento();
@@ -196,15 +198,18 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_preco:{
+                //codigo para ordenar lista por preco
                 mButtonViewDistancia.setChecked(false);
                 mButtonViewAgilidade.setChecked(false);
                 break;
             }
             case R.id.btn_agilidade:{
+                //codigopara ordenar lista por agilidade
                 mButtonViewPreco.setChecked(false);
                 mButtonViewDistancia.setChecked(false);
                 break;            }
             case R.id.btn_distancia:{
+                //codigo para ordenar lista por distancia
                 mButtonViewPreco.setChecked(false);
                 mButtonViewAgilidade.setChecked(false);
                 break;
@@ -224,7 +229,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         int id=item.getItemId();
 
         if(id==R.id.item_menu_notifications){
-
+            //codigo para abrir notificacoes
             return true;
         }
         if(id==R.id.foto_perfil_menu){

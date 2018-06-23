@@ -15,8 +15,13 @@ public class UsuarioPerfilActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private AdapterHistoricoServicosUsuario mAdapterServicos;
+    private String mNomeUsario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(savedInstanceState!=null){
+            mNomeUsario=savedInstanceState.getString("NOME_USUARIO");
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_perfil);
 
@@ -26,6 +31,7 @@ public class UsuarioPerfilActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(this.mAdapterServicos);
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
