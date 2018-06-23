@@ -41,11 +41,8 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater=getMenuInflater();
-
-        inflater.inflate(R.menu.menu_sugestoes_oficinas,menu);
-
+        inflater.inflate(R.menu.app_bar,menu);
         return true;
     }
 
@@ -53,11 +50,17 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
 
-        if(id==R.id.notification_sugestao_icon){
-            //exibe as notificacoes
+        if(id==R.id.item_menu_notifications){
+
+            return true;
+        }
+        if(id==R.id.foto_perfil_menu){
+            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            startActivity(intent);
+            return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
@@ -67,20 +70,29 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         String TAG=this.getClass().getName();
         switch (view.getId()){
 
+
             case R.id.v_category_oil:
-                startActivity(new Intent(this,ListaOficinasActivity.class));
+                Intent intent=new Intent(this,ListaOficinasActivity.class);
+                intent.putExtra("categoria","Troca de Óleo");
+                startActivity(intent);
                 break;
 
             case R.id.v_category_reparo:
-                startActivity(new Intent(this,ListaOficinasActivity.class));
+                Intent intent2=new Intent(this,ListaOficinasActivity.class);
+                intent2.putExtra("categoria","Reparo");
+                startActivity(intent2);
                 break;
 
             case R.id.v_category_revisao:
-                startActivity(new Intent(this,ListaOficinasActivity.class));
+                Intent intent3=new Intent(this,ListaOficinasActivity.class);
+                intent3.putExtra("categoria","Revisão");
+                startActivity(intent3);
                 break;
 
             case R.id.v_category_bateria:
-                startActivity(new Intent(this,ListaOficinasActivity.class));
+                Intent intent4=new Intent(this,ListaOficinasActivity.class);
+                intent4.putExtra("categoria","Bateria");
+                startActivity(intent4);
                 break;
 
         }

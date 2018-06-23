@@ -8,12 +8,14 @@
        android:id="@+id/menu_filtro-lista_oficina"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
+
        <ImageView
            android:id="@+id/iv_filter_icon"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:src="@mipmap/ic_filter"
-           android:layout_margin="5dp"/>
+           android:layout_margin="5dp"
+           android:contentDescription="filter"
+           android:src="@mipmap/ic_filter" />
        <ToggleButton
            android:id="@+id/btn_preco"
            android:layout_width="wrap_content"

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".gui.IntroducaoActivity">
+    >
 
     <item android:id="@+id/notification_sugestao_icon"
     android:orderInCategory="1"
     android:icon="@drawable/ic_notifications_black_24dp"
     app:showAsAction="ifRoom"
     android:title="@string/notification"/>
+    <item
+        android:id="@+id/foto_perfil_menu"
+        android:actionLayout="@layout/foto_perfil_usuario"
+        android:contentDescription="Perfil"
+        android:orderInCategory="2"
+        android:title="Perfil"
+        app:showAsAction="ifRoom|collapseActionView"
+
+       />
+
 </menu>

@@ -60,5 +60,29 @@ public class OkHttpController {
         return s.toString();
     }
 
+    public static String parseToStringForGet(ContentValues c){
+
+        StringBuilder s = new StringBuilder();
+
+        for (String name: c.keySet()) {
+            String value = c.get(name).toString();
+            s.append("/"+value);
+        }
+        return s.toString();
+    }
+    public static String getHttp(String urlBase, ContentValues params) throws IOException{
+        OkHttpClient client = new OkHttpClient();
+
+        String parametros=parseToStringForGet(params);
+        String url=urlBase+parametros;
+
+        Request request = new Request.Builder().url(url).build();
+        Response response = client.newCall(request).execute();
+
+        String jsonResposta=response.body().toString();
+
+        return jsonResposta;
+
+    }
 
 }

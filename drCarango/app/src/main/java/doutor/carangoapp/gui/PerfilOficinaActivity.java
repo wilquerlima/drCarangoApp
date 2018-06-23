@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -106,9 +107,8 @@ public class PerfilOficinaActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.perfil_oficina_menu,menu);
+        inflater.inflate(R.menu.app_bar,menu);
         return true;
     }
 
@@ -118,9 +118,15 @@ public class PerfilOficinaActivity extends AppCompatActivity {
 
         if(id==R.id.item_menu_notifications){
 
+            return true;
+        }
+        if(id==R.id.foto_perfil_menu){
+            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            startActivity(intent);
+            return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     public AdapterComentsOficina getmComentariosAdapter() {

@@ -25,6 +25,15 @@ public class BaseEstabelecimento {
     private double rankingAgilidade;
     private double rankingCustoBeneficio;
     private double rankingServico;
+    private boolean isParceira;
+
+    public boolean isParceira() {
+        return isParceira;
+    }
+
+    public void setParceira(boolean parceira) {
+        isParceira = parceira;
+    }
 
     public int getId() {
         return id;
