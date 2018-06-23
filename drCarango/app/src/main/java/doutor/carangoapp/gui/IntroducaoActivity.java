@@ -16,23 +16,17 @@ public class IntroducaoActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introducao);
-
-        btn_entrar = findViewById(R.id.btn_entrar);
-        btn_cadastrar = findViewById(R.id.btn_cadastrar);
-
-        btn_entrar.setOnClickListener(this);
-        btn_cadastrar.setOnClickListener(this);
+        View face_login=findViewById(R.id.iv_face_icon);
+        face_login.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_entrar:
-                startActivity(new Intent(this,LoginActivity.class));
+            case R.id.iv_face_icon:
+                startActivity(new Intent(this,SugestoesActivity.class));
                 break;
-            case R.id.btn_cadastrar:
-                startActivity(new Intent(this,CadastroActivity.class));
-                break;
+
         }
     }
 }

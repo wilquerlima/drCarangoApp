@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,51 +7,40 @@
     tools:context="doutor.carangoapp.gui.IntroducaoActivity">
 
     <ImageView
+        android:id="@+id/iv_logo_inicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="72dp" />
+        android:layout_above="@id/iv_carango"
+        android:layout_centerInParent="true"
+        android:contentDescription="logo"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/iv_carango"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/doutorcarango" />
+
+    <ImageView
+        android:id="@+id/iv_face_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_carango"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/login_fb" />
 
     <TextView
+        android:id="@+id/tv_fazer_cadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:text="@string/txtIntro"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@id/iv_face_icon"
+        android:layout_centerHorizontal="true"
+        android:text="crie sua conta"
+        android:textColor="#083863"
+        android:textSize="30sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_cadastrar"
-        android:text="Cadastrar"
-        android:background="@drawable/btn_rounded"
-        android:textColor="@color/color_branca"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="413dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_entrar"
-        android:text="Entrar"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        android:textColor="@color/color_branca"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/btn_rounded"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="353dp" />
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

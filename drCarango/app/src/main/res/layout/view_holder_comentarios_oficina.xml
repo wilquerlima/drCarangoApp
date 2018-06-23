@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_icone_generic_person_coments"
+        android:layout_width="31dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="15dp"
+        android:background="@mipmap/ic_comentperson" />
+
+    <TextView
+        android:id="@+id/tv_nome_comentario_oficina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/iv_icone_generic_person_coments"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        tools:ignore="UnknownId" />
+
+    <TextView
+        android:id="@+id/tv_conteudo_comentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nome_comentario_oficina"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/iv_icone_generic_person_coments"
+        android:padding="5dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+    <View
+        android:id="@+id/v_line_divisor_coment"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/tv_conteudo_comentario"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/darker_gray" />
+
+</RelativeLayout>
