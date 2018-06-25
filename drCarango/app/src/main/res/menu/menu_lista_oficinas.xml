@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="doutor.carangoapp.gui.ListaOficinasActivity">
+    <item
+        android:id="@+id/item_noticications_sugestoes"
+        android:orderInCategory="1"
+        android:title="@string/notifications_menu"
+        app:showAsAction="ifRoom" />
+
+</menu>

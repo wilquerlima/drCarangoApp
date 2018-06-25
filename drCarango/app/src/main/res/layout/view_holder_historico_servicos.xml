@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <View
+            android:id="@+id/v_line_divisor_perfil_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/darker_gray"></View>
+
+        <TextView
+            android:id="@+id/tv_perfil_usuario_categoria_servico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v_line_divisor_perfil_usuario"
+            android:text="Revisao - "
+            android:textColor="@android:color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_perfil_usuario_nome_oficina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_perfil_usuario_categoria_servico"
+            android:layout_below="@id/v_line_divisor_perfil_usuario"
+            android:text="Oficina s. Joap"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_data_servico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_perfil_usuario_categoria_servico"
+            android:layout_margin="5dp"
+            android:text="25/04/1990"
+            android:textColor="@android:color/black" />
+
+        <View
+            android:id="@+id/ic_estrela_perfil_usuario"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/tv_perfil_usuario_categoria_servico"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/tv_nota_servico_perfil_usuario"
+            android:background="@mipmap/ic_star" />
+
+        <TextView
+            android:id="@+id/tv_nota_servico_perfil_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_perfil_usuario_categoria_servico"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/tv_data_servico"
+            android:text="4"
+            android:textColor="@android:color/black"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

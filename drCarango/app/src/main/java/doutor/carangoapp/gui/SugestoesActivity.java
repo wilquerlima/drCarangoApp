@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -18,7 +19,8 @@ import doutor.carangoapp.R;
 public class SugestoesActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-   private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
+
+    private View  vCategory_Oil, imCategory_Reparo,imCategory_Revisao,imCategory_Bateria;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +36,13 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         imCategory_Bateria.setOnClickListener(this);
         imCategory_Reparo.setOnClickListener(this);
 
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater=getMenuInflater();
-
         inflater.inflate(R.menu.app_bar,menu);
-
         return true;
     }
 
@@ -50,11 +50,17 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
 
-        if(id==R.menu.app_bar){
-            //do something
+        if(id==R.id.item_menu_notifications){
+
+            return true;
+        }
+        if(id==R.id.foto_perfil_menu){
+            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            startActivity(intent);
+            return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
@@ -64,24 +70,29 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         String TAG=this.getClass().getName();
         switch (view.getId()){
 
+
             case R.id.v_category_oil:
-                mSugestao.setText("Botao oleo");
-                Log.d(TAG,"Botao Oleo");
+                Intent intent=new Intent(this,ListaOficinasActivity.class);
+                intent.putExtra("categoria","Troca de Óleo");
+                startActivity(intent);
                 break;
 
             case R.id.v_category_reparo:
-                mSugestao.setText("Botao reparo");
-                Log.d(TAG,"Botao reparo");
+                Intent intent2=new Intent(this,ListaOficinasActivity.class);
+                intent2.putExtra("categoria","Reparo");
+                startActivity(intent2);
                 break;
 
             case R.id.v_category_revisao:
-                mSugestao.setText("Botao revisao");
-                Log.d(TAG,"Botao revisao");
+                Intent intent3=new Intent(this,ListaOficinasActivity.class);
+                intent3.putExtra("categoria","Revisão");
+                startActivity(intent3);
                 break;
 
             case R.id.v_category_bateria:
-                mSugestao.setText("Botao bateria");
-                Log.d(TAG,"Botao bateria");
+                Intent intent4=new Intent(this,ListaOficinasActivity.class);
+                intent4.putExtra("categoria","Bateria");
+                startActivity(intent4);
                 break;
 
         }
