@@ -38,6 +38,7 @@ public class OkHttpController {
             response = client.newCall(request).execute();
             JSONObject json = new JSONObject(response.body().string());
             jsonObject = json.get("");//nome do objeto que vai retornar
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

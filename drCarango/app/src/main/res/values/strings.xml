@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DrCarango</string>
+    <string name="app_name">Dr.Carango</string>
     <string name="txtIntro">Bem vindo ao Dr Carango!\nAqui você vai encontrar a melhor maneira de concertar seu veículo.</string>
 
     <!-- Labels Activitys -->
@@ -107,6 +107,13 @@
     <string name="oficina_parceira_texto">Oficina parceira e aprovada pelo Doutor Carango</string>
     <string name="foto_usuario">foto_usuario</string>
     <string name="urlDrCarango">http://doutorcarango.kinghost.net:21193</string>
+    <string name="txt_intro_usuario">Sou motorista >></string>
+    <string name="txt_intro_oficina">Sou oficina >></string>
+    <string name="txt_esqueceu_senha"><u>Esqueceu a senha?</u></string>
+    <string name="txt_cadastro_login">Não tem uma conta? <u> Cadastre-se.</u></string>
+    <string name="txt_possui_cadastro">Já possui uma conta? <u> Entre aqui.</u></string>
+    <string name="txt_login">Entrar</string>
+    <string name="txt_cadastrar">Criar Conta</string>
 
 
 

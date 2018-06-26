@@ -28,4 +28,16 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="btn_introducao_motorista">
+        <item name="android:textSize">17sp</item>
+        <item name="android:background">@drawable/btn_introducao_motorista</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="btn_introducao_oficina">
+        <item name="android:textSize">17sp</item>
+        <item name="android:background">@drawable/btn_introducao_oficina</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>
