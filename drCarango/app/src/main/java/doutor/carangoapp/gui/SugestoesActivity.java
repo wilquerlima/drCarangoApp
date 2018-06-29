@@ -1,6 +1,9 @@
 package doutor.carangoapp.gui;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -70,7 +73,6 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         String TAG=this.getClass().getName();
         switch (view.getId()){
 
-
             case R.id.v_category_oil:
                 Intent intent=new Intent(this,ListaOficinasActivity.class);
                 intent.putExtra("categoria","Troca de Óleo");
@@ -78,6 +80,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.v_category_reparo:
+
                 Intent intent2=new Intent(this,ListaOficinasActivity.class);
                 intent2.putExtra("categoria","Reparo");
                 startActivity(intent2);
