@@ -2,10 +2,8 @@ package doutor.carangoapp.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -27,7 +25,7 @@ public class PerfilOficinaActivity extends AppCompatActivity {
     private TextView tv_NotaOficina;
     private TextView tv_EnderecoOficina;
     private TextView tv_TelefoneNoficina;
-    private TextView tv_AmigosVisitaramOficina;
+    private TextView tv_promocoes;
     private RecyclerView mRecyclerViewComenarios;
     private AdapterComentsOficina mComentariosAdapter;
     private BaseEstabelecimento mOficina;
@@ -55,8 +53,9 @@ public class PerfilOficinaActivity extends AppCompatActivity {
         tv_NotaOficina=findViewById(R.id.tv_nota_oficina_perfil);
         tv_EnderecoOficina=findViewById(R.id.tv_endereco_oficina_perfil);
         tv_TelefoneNoficina=findViewById(R.id.tv_telefone_oficina_perfil);
-        tv_AmigosVisitaramOficina=findViewById(R.id.tv_amigos_visitaram);
+        tv_promocoes=findViewById(R.id.tv_promo_perfil_oficina);
 
+        tv_promocoes.setText("10 % de desconto na troca de óleo");
         tv_NomeNoficina.setText(mOficina.getNome());
         tv_NotaOficina.setText(Double.toString(mOficina.getRankingServico()));
         tv_TelefoneNoficina.setText(mOficina.getTelefone());
@@ -121,7 +120,7 @@ public class PerfilOficinaActivity extends AppCompatActivity {
             return true;
         }
         if(id==R.id.foto_perfil_menu){
-            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            Intent intent=new Intent(this,PrefilUsuarioActivity.class);
             startActivity(intent);
             return true;
         }

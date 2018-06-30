@@ -1,20 +1,13 @@
 package doutor.carangoapp.gui;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import doutor.carangoapp.R;
@@ -58,7 +51,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
             return true;
         }
         if(id==R.id.foto_perfil_menu){
-            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            Intent intent=new Intent(this,PrefilUsuarioActivity.class);
             startActivity(intent);
             return true;
         }

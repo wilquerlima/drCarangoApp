@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp">
+        android:layout_margin="5dp">
 
         <TextView
             android:id="@+id/circle_oficina_list"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentStart="true"
-            android:layout_margin="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/circle_oficina_icone"
             android:gravity="center"
-            android:padding="2dp"
+            android:padding="10dp"
             android:visibility="visible" />
 
         <TextView
@@ -29,6 +34,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/circle_oficina_list"
             android:fontFamily="sans-serif"
+            android:text="Oficina São João"
             android:textColor="@android:color/black"
             android:textSize="22sp" />
 
@@ -37,6 +43,7 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_below="@id/tv_nome_oficina"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/circle_oficina_list"
             android:contentDescription="stars_of_oficina"
             android:src="@mipmap/ic_star" />
@@ -46,24 +53,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_nome_oficina"
-            android:layout_toEndOf="@+id/iv_avaliacoes_estrelas" />
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/iv_avaliacoes_estrelas"
+            android:text="4.88" />
 
         <TextView
             android:id="@+id/tv_numero_avaliacoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_nome_oficina"
-            android:layout_marginLeft="4dp"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="5dp"
             android:layout_toEndOf="@id/tv_media_avaliacoes"
+            android:text="300"
             android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/iv_comment_bubble"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_below="@id/iv_avaliacoes_estrelas"
-            android:layout_margin="5dp"
-            android:layout_toEndOf="@id/circle_oficina_list"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/tv_nome_oficina"
+            android:layout_margin="6dp"
+            android:layout_toEndOf="@+id/tv_numero_avaliacoes"
             android:contentDescription="comment_bubble"
             android:src="@mipmap/ic_comentbubble" />
 
@@ -71,28 +83,33 @@
             android:id="@+id/tv_numero_comentarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_avaliacoes_estrelas"
-            android:layout_toEndOf="@id/iv_comment_bubble" />
+            android:layout_below="@+id/tv_nome_oficina"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/iv_comment_bubble"
+            android:text="200" />
 
+        <View
+            android:id="@+id/ic_parceira_oficina_lista"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/circle_oficina_list"
+            android:layout_alignEnd="@+id/circle_oficina_list"
+            android:layout_marginBottom="1dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/selo_dr_carango" />
 
-        <ImageView
-            android:id="@+id/iv_amigos_em_comum"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_below="@id/iv_avaliacoes_estrelas"
-            android:layout_margin="5dp"
-            android:layout_toEndOf="@id/tv_numero_comentarios"
-            android:src="@mipmap/ic_friends"
-
-            />
-
-        <TextView
-            android:id="@+id/tv_numero_amigos_em_comum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/iv_avaliacoes_estrelas"
-            android:layout_toEndOf="@+id/iv_amigos_em_comum" />
-
+        <View
+            android:id="@+id/v_promocao"
+            android:layout_width="69dp"
+            android:layout_height="16dp"
+            android:layout_alignStart="@+id/iv_avaliacoes_estrelas"
+            android:layout_below="@+id/iv_avaliacoes_estrelas"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/iv_avaliacoes_estrelas"
+            android:background="@drawable/promo_icon" />
     </RelativeLayout>
+</android.support.v7.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
+
+
+

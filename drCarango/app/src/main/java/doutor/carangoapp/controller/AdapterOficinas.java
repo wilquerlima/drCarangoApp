@@ -57,7 +57,6 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         BaseEstabelecimento oficina=mOficinas.get(position);
         holder.getmNomeOficina().setText(oficina.getNome());
         holder.getmMediaAvaliacoes().setText(Double.toString(oficina.getRankingServico()));
-        holder.getmNumeroAmigosEmComum().setText( (r.nextInt(100))+" amigos em comum");
         holder.getmNumeroComentarios().setText( " ("+ r.nextInt(100)+ ")");
         holder.getmNumeroAvaliacoes().setText(" ("+Integer.toString (r.nextInt(100))+")");
 
@@ -79,8 +78,10 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         private TextView mCircleOficinaList;
         private TextView mNumeroAvaliacoes;
         private TextView mNumeroComentarios;
-        private TextView mNumeroAmigosEmComum;
         private TextView mMediaAvaliacoes;
+        private View mPromocao;
+        private View mOficinaParceira;
+
 
         public OficinasViewHolder(View itemView) {
 
@@ -89,13 +90,28 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
             mCircleOficinaList=itemView.findViewById(R.id.circle_oficina_list);
             mNumeroAvaliacoes=itemView.findViewById(R.id.tv_numero_avaliacoes);
             mNumeroComentarios=itemView.findViewById(R.id.tv_numero_comentarios);
-            mNumeroAmigosEmComum=itemView.findViewById(R.id.tv_numero_amigos_em_comum);
+            mPromocao=itemView.findViewById(R.id.v_promocao);
             mMediaAvaliacoes=itemView.findViewById(R.id.tv_media_avaliacoes);
+            mOficinaParceira=itemView.findViewById(R.id.ic_parceira_oficina_lista);
             itemView.setOnClickListener(this);
 
         }
 
+        public View getmPromocao() {
+            return mPromocao;
+        }
 
+        public void setmPromocao(View mPromocao) {
+            this.mPromocao = mPromocao;
+        }
+
+        public View getmOficinaParceira() {
+            return mOficinaParceira;
+        }
+
+        public void setmOficinaParceira(View mOficinaParceira) {
+            this.mOficinaParceira = mOficinaParceira;
+        }
 
         public TextView getmMediaAvaliacoes() {
             return mMediaAvaliacoes;
@@ -130,9 +146,7 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
             this.mNumeroComentarios = mNumeroComentarios;
         }
 
-        public void setmNumeroAmigosEmComum(TextView mNumeroAmigosEmComum) {
-            this.mNumeroAmigosEmComum = mNumeroAmigosEmComum;
-        }
+
 
         public TextView getmCircleOficinaList() {
             return mCircleOficinaList;
@@ -148,9 +162,7 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
             return mNumeroComentarios;
         }
 
-        public TextView getmNumeroAmigosEmComum() {
-            return mNumeroAmigosEmComum;
-        }
+
 
 
         @Override

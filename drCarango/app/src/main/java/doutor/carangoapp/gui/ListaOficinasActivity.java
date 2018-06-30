@@ -18,7 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
@@ -59,7 +58,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         Bundle args=new Bundle();
         args.putString("categoria",mCategoria);
 
-        getSupportLoaderManager().initLoader(0, args, this).forceLoad();
+        //getSupportLoaderManager().initLoader(0, args, this).forceLoad();
 
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
@@ -233,7 +232,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
             return true;
         }
         if(id==R.id.foto_perfil_menu){
-            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            Intent intent=new Intent(this,PrefilUsuarioActivity.class);
             startActivity(intent);
             return true;
         }

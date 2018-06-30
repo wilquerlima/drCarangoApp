@@ -44,7 +44,7 @@
             android:parentActivityName=".gui.ListaOficinasActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".gui.UsuarioPerfilActivity"
+        <activity android:name=".gui.PrefilUsuarioActivity"
             />
 
     </application>
