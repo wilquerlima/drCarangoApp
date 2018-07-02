@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -22,7 +23,9 @@ import java.util.ArrayList;
 import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.controller.AdapterOficinas;
+import doutor.carangoapp.controller.AsyncGenerico;
 import doutor.carangoapp.controller.LoaderOficinasList;
+import doutor.carangoapp.controller.WebServiceController;
 
 public class ListaOficinasActivity extends AppCompatActivity implements View.OnClickListener,AdapterOficinas.OnItemClickListener,LoaderManager.LoaderCallbacks<String> {
 
@@ -33,6 +36,9 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     private ToggleButton mButtonViewDistancia;
     private String JSonListOficinas;
     private static String mCategoria;
+
+    private String jsonString;
+    private ArrayList<BaseEstabelecimento> arrayOficinas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +64,20 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         Bundle args=new Bundle();
         args.putString("categoria",mCategoria);
 
+        AsynListarOficinas async = new AsynListarOficinas(ListaOficinasActivity.this);
+        async.execute();
+
         //getSupportLoaderManager().initLoader(0, args, this).forceLoad();
 
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
         mRecyclerView=findViewById(R.id.recycler_view_lista_oficinas);
-
         mRecyclerView.setLayoutManager(manager);
 
         mAdapterOficinas=new AdapterOficinas(this);
-        mAdapterOficinas.setmOficinas(SetupAdapterTest());
-        mRecyclerView.setAdapter(mAdapterOficinas);
+        //mAdapterOficinas.setmOficinas(SetupAdapterTest());
+        //mAdapterOficinas.setmOficinas(SetupAdapterTest());
+        //mRecyclerView.setAdapter(mAdapterOficinas);
 
         mRecyclerView.addItemDecoration(
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
@@ -103,16 +112,21 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
             for(int i=0;i<jsonOficinas.length();i++){
                 oficina=new JSONObject(jsonOficinas.getString(i));
                 BaseEstabelecimento estabelecimento=new BaseEstabelecimento();
+                estabelecimento.setId(oficina.getInt("id"));
                 estabelecimento.setNome(oficina.getString("nome"));
-                estabelecimento.setTelefone(oficina.getString("nome"));
-                estabelecimento.setRua(oficina.getString("nome"));
-                estabelecimento.setNumero(oficina.getString("nome"));
-                estabelecimento.setEstado(oficina.getString("nome"));
-                estabelecimento.setComplemento(oficina.getString("nome"));
-                estabelecimento.setCidade(oficina.getString("nome"));
-                estabelecimento.setCep(oficina.getString("nome"));
-                estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("nome")));
+                estabelecimento.setCpf(oficina.getString("cnpj"));
                 estabelecimento.setEmail(oficina.getString("email"));
+                estabelecimento.setRua(oficina.getString("rua"));
+                estabelecimento.setNumero(oficina.getString("numero"));
+                estabelecimento.setBairro(oficina.getString("bairro"));
+                estabelecimento.setCidade(oficina.getString("cidade"));
+                estabelecimento.setCep(oficina.getString("cep"));
+                estabelecimento.setEstado(oficina.getString("estado"));
+                estabelecimento.setPais(oficina.getString("pais"));
+                estabelecimento.setComplemento(oficina.getString("complemento"));
+                estabelecimento.setRankingAgilidade(Double.parseDouble(oficina.getString("rankingAgilidade")));
+                estabelecimento.setRankingCustoBeneficio(Double.parseDouble(oficina.getString("rankingCustoBeneficio")));
+                estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("rankingServico")));
                 oficinas.add(estabelecimento);
             }
 
@@ -238,6 +252,37 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         }
 
         return true;
+    }
+
+    private class AsynListarOficinas extends AsyncGenerico<Object,Integer,Long>{
+
+        Activity myActivity;
+
+        public AsynListarOficinas(Activity activity) {
+            super(activity);
+            this.myActivity = activity;
+        }
+
+        @Override
+        protected Long doInBackground(Object... objects) {
+
+            try{
+                jsonString = WebServiceController.recuperarListaOficinas();
+
+                arrayOficinas = getOficinasFromJson(jsonString);
+                myActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapterOficinas.setmOficinas(arrayOficinas);
+                        mRecyclerView.setAdapter(mAdapterOficinas);
+                    }
+                });
+
+            }catch (Exception e){
+                alertError(e.getMessage());
+            }
+            return null;
+        }
     }
 }
 
