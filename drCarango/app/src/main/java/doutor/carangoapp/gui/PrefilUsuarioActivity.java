@@ -11,7 +11,7 @@ import android.view.MenuInflater;
 import doutor.carangoapp.R;
 import doutor.carangoapp.controller.AdapterHistoricoServicosUsuario;
 
-public class UsuarioPerfilActivity extends AppCompatActivity {
+public class PrefilUsuarioActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private AdapterHistoricoServicosUsuario mAdapterServicos;

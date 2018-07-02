@@ -1,17 +1,13 @@
 package doutor.carangoapp.gui;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import doutor.carangoapp.R;
@@ -55,7 +51,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
             return true;
         }
         if(id==R.id.foto_perfil_menu){
-            Intent intent=new Intent(this,UsuarioPerfilActivity.class);
+            Intent intent=new Intent(this,PrefilUsuarioActivity.class);
             startActivity(intent);
             return true;
         }
@@ -70,7 +66,6 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
         String TAG=this.getClass().getName();
         switch (view.getId()){
 
-
             case R.id.v_category_oil:
                 Intent intent=new Intent(this,ListaOficinasActivity.class);
                 intent.putExtra("categoria","Troca de Óleo");
@@ -78,6 +73,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.v_category_reparo:
+
                 Intent intent2=new Intent(this,ListaOficinasActivity.class);
                 intent2.putExtra("categoria","Reparo");
                 startActivity(intent2);
