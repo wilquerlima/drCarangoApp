@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_avalie_custo_beneficio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Como você avalia o custo-benefíco ?"
+        android:textColor="#009688"
+        android:textSize="30sp"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/iv_star_1_custo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/icone_estrela_avaliacao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avalie_custo_beneficio"
+        android:textOff=""
+        android:textOn=""/>
+
+    <ToggleButton
+        android:id="@+id/iv_star_2_custo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/icone_estrela_avaliacao"
+        app:layout_constraintLeft_toRightOf="@+id/iv_star_1_custo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avalie_custo_beneficio"
+        android:textOff=""
+        android:textOn=""/>
+
+    <ToggleButton
+        android:id="@+id/iv_star_3_custo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/icone_estrela_avaliacao"
+        app:layout_constraintLeft_toRightOf="@+id/iv_star_2_custo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avalie_custo_beneficio"
+        android:textOff=""
+        android:textOn=""/>
+
+    <ToggleButton
+        android:id="@+id/iv_star_4_custo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/icone_estrela_avaliacao"
+        app:layout_constraintLeft_toRightOf="@+id/iv_star_3_custo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avalie_custo_beneficio"
+        android:textOff=""
+        android:textOn=""/>
+
+    <ToggleButton
+        android:id="@+id/iv_star_5_custo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/icone_estrela_avaliacao"
+        app:layout_constraintLeft_toRightOf="@+id/iv_star_4_custo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avalie_custo_beneficio"
+        android:textOff=""
+        android:textOn=""
+        />
+
+    <Button
+        android:id="@+id/btn_proximo_custo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/pr_ximo"
+        android:theme="@style/btn_avaliacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/iv_star_4_custo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_star_5_custo" />
+</android.support.constraint.ConstraintLayout>

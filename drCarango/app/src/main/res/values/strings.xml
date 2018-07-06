@@ -114,7 +114,9 @@
     <string name="txt_possui_cadastro">Já possui uma conta? <u> Entre aqui.</u></string>
     <string name="txt_login">Entrar</string>
     <string name="txt_cadastrar">Criar Conta</string>
-
+    <string name="avalie_esta_oficina">Avalie esta oficina</string>
+    <string name="pr_ximo">PRÓXIMO</string>
+    <string name="concluido">Concluído</string>
 
 
 </resources>

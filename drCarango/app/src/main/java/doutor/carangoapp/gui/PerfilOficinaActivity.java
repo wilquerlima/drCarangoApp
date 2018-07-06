@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,8 +21,11 @@ import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.base.testeServidor;
 import doutor.carangoapp.controller.AdapterComentsOficina;
 
-public class PerfilOficinaActivity extends AppCompatActivity {
+public class PerfilOficinaActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private View btn_EntrarContato;
+    private View btn_AbrirMaps;
+    private View btn_AvaliarOficina;
     private TextView tv_NomeNoficina;
     private TextView tv_NotaOficina;
     private TextView tv_EnderecoOficina;
@@ -32,7 +37,9 @@ public class PerfilOficinaActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        setContentView(R.layout.activity_pefiloficina);
         super.onCreate(savedInstanceState);
+
         testeServidor servidor=new testeServidor();
         servidor.SetupEstabelecimentoTest();
         servidor.setUpComentariosTeste();
@@ -43,9 +50,14 @@ public class PerfilOficinaActivity extends AppCompatActivity {
         mOficina=servidor.getEstabelecimentos().get(posisao);
         this.setTitle(mOficina.getNome());
 
+        btn_AvaliarOficina=findViewById(R.id.btn_avalie_oficina);
+        btn_AbrirMaps=findViewById(R.id.btn_abrir_maps_perfil_oficina);
+        btn_EntrarContato=findViewById(R.id.btn_entrar_contato_perfil_oficina);
+        btn_EntrarContato.setOnClickListener(this);
+        btn_AbrirMaps.setOnClickListener(this);
+        btn_AvaliarOficina.setOnClickListener(this);
 
 
-        setContentView(R.layout.activity_pefiloficina);
 
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
@@ -145,4 +157,19 @@ public class PerfilOficinaActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+
+        switch (id){
+            case(R.id.btn_avalie_oficina):
+                Intent intent=new Intent(this,AvaliacaoCustoActivity.class);
+                startActivity(intent);
+                break;
+            case(R.id.btn_abrir_maps_perfil_oficina):
+                break;
+            case(R.id.btn_entrar_contato_perfil_oficina):
+                break;
+        }
+    }
 }

@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".gui.IntroducaoActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".gui.LoginActivity"
             android:label="@string/label_login"
@@ -30,9 +29,10 @@
             android:label="@string/label_menu"
             android:parentActivityName=".gui.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,9 +44,11 @@
             android:parentActivityName=".gui.ListaOficinasActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".gui.PrefilUsuarioActivity"
-            />
-
+        <activity android:name=".gui.PrefilUsuarioActivity" />
+        <activity android:name=".gui.AvaliacaoCustoActivity" />
+        <activity android:name=".gui.AvaliacaoQualidadeActivity" />
+        <activity android:name=".gui.AvalicaoAgilidadeActivity" />
+        <activity android:name=".gui.AvaliacaoComentarioActivity"></activity>
     </application>
 
 </manifest>
