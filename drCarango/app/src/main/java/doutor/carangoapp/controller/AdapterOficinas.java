@@ -19,12 +19,12 @@ import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
 
 
-
 public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.OficinasViewHolder> {
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(int position);
     }
+
     private ArrayList<BaseEstabelecimento> mOficinas;
 
     private final OnItemClickListener mOnClickListener;
@@ -38,38 +38,37 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
     }
 
 
-
-    public AdapterOficinas(OnItemClickListener listener){
-        this.mOnClickListener=listener;
+    public AdapterOficinas(OnItemClickListener listener) {
+        this.mOnClickListener = listener;
     }
 
     @Override
     public OficinasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater=LayoutInflater.from(parent.getContext());
-        View result=inflater.inflate(R.layout.layout_viewholder_oficina,parent,false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View result = inflater.inflate(R.layout.layout_viewholder_oficina, parent, false);
         return new OficinasViewHolder(result);
     }
 
     @Override
     public void onBindViewHolder(OficinasViewHolder holder, int position) {
 
-        Random r=new Random();
-        BaseEstabelecimento oficina=mOficinas.get(position);
+        Random r = new Random();
+        BaseEstabelecimento oficina = mOficinas.get(position);
         holder.getmNomeOficina().setText(oficina.getNome());
         holder.getmMediaAvaliacoes().setText(Double.toString(oficina.getRankingServico()));
-        holder.getmNumeroComentarios().setText( " ("+ r.nextInt(100)+ ")");
-        holder.getmNumeroAvaliacoes().setText(" ("+Integer.toString (r.nextInt(100))+")");
+        holder.getmNumeroComentarios().setText(" (" + r.nextInt(100) + ")");
+        holder.getmNumeroAvaliacoes().setText(" (" + Integer.toString(r.nextInt(100)) + ")");
 
         //gera randomicamente cor para circulo na view
-        GradientDrawable background=(GradientDrawable) holder.getmCircleOficinaList().getBackground();
-        background.setColor(Color.argb(255,r.nextInt(256),r.nextInt(256),r.nextInt(256)));
+        GradientDrawable background = (GradientDrawable) holder.getmCircleOficinaList().getBackground();
+        background.setColor(Color.argb(255, r.nextInt(256), r.nextInt(256), r.nextInt(256)));
 
 
     }
 
     @Override
     public int getItemCount() {
-       return mOficinas!=null?mOficinas.size():0;
+        return mOficinas != null ? mOficinas.size() : 0;
     }
 
     public class OficinasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -86,13 +85,13 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         public OficinasViewHolder(View itemView) {
 
             super(itemView);
-            mNomeOficina=itemView.findViewById(R.id.tv_nome_oficina);
-            mCircleOficinaList=itemView.findViewById(R.id.circle_oficina_list);
-            mNumeroAvaliacoes=itemView.findViewById(R.id.tv_numero_avaliacoes);
-            mNumeroComentarios=itemView.findViewById(R.id.tv_numero_comentarios);
-            mPromocao=itemView.findViewById(R.id.v_promocao);
-            mMediaAvaliacoes=itemView.findViewById(R.id.tv_media_avaliacoes);
-            mOficinaParceira=itemView.findViewById(R.id.ic_parceira_oficina_lista);
+            mNomeOficina = itemView.findViewById(R.id.tv_nome_oficina);
+            mCircleOficinaList = itemView.findViewById(R.id.circle_oficina_list);
+            mNumeroAvaliacoes = itemView.findViewById(R.id.tv_numero_avaliacoes);
+            mNumeroComentarios = itemView.findViewById(R.id.tv_numero_comentarios);
+            mPromocao = itemView.findViewById(R.id.v_promocao);
+            mMediaAvaliacoes = itemView.findViewById(R.id.tv_media_avaliacoes);
+            mOficinaParceira = itemView.findViewById(R.id.ic_parceira_oficina_lista);
             itemView.setOnClickListener(this);
 
         }
@@ -127,7 +126,6 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         }
 
 
-
         public void setmNomeOficina(TextView mNomeOficina) {
             this.mNomeOficina = mNomeOficina;
         }
@@ -135,7 +133,6 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         public void setmCircleOficinaList(TextView mCircleOficinaList) {
             this.mCircleOficinaList = mCircleOficinaList;
         }
-
 
 
         public void setmNumeroAvaliacoes(TextView mNumeroAvaliacoes) {
@@ -147,11 +144,9 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         }
 
 
-
         public TextView getmCircleOficinaList() {
             return mCircleOficinaList;
         }
-
 
 
         public TextView getmNumeroAvaliacoes() {
@@ -161,8 +156,6 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         public TextView getmNumeroComentarios() {
             return mNumeroComentarios;
         }
-
-
 
 
         @Override

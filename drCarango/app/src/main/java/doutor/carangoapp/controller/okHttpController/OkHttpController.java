@@ -74,16 +74,16 @@ public class OkHttpController {
     public static String getHttp(String urlBase, ContentValues params) throws IOException{
         OkHttpClient client = new OkHttpClient();
 
-        String parametros=parseToStringForGet(params);
-        String url=urlBase+parametros;
+        if(params != null){
+            String parametros=parseToStringForGet(params);
+            urlBase = urlBase+parametros;
+        }
 
-        Request request = new Request.Builder().url(url).build();
+
+        Request request = new Request.Builder().url(urlBase).build();
         Response response = client.newCall(request).execute();
 
-        String jsonResposta=response.body().toString();
-
-        return jsonResposta;
-
+        return response.body().string();
     }
 
 }
