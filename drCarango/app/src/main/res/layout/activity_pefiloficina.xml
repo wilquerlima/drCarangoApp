@@ -91,7 +91,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_toEndOf="@+id/iv_location_icone_oficina"
-                    android:text="Rua raul pompeia 294 arruda "
+                    android:text=""
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp" />
 
@@ -121,7 +121,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_toEndOf="@id/iv_fone_icone_oficina"
-                    android:text="309701381"
+                    android:text="3097-0138"
                     android:textAlignment="textStart"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -251,9 +251,9 @@
             android:id="@+id/btn_entrar_contato_perfil_oficina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_contato_oficina"
-            android:padding="10dp"
+            style="@style/btn_introducao_motorista"
             android:text="Entrar em Contato"
+            android:padding="5dp"
             android:textColor="@android:color/white"
            />
 
@@ -261,12 +261,12 @@
             android:id="@+id/btn_abrir_maps_perfil_oficina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/btn_abrir_maps_oficina"
+            android:layout_marginStart="15dp"
+            style="@style/btn_introducao_oficina"
             android:layout_toEndOf="@+id/btn_entrar_contato_perfil_oficina"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="Abrir no Maps"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
 

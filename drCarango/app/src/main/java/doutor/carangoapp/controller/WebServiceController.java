@@ -11,11 +11,17 @@ import doutor.carangoapp.controller.okHttpController.OkHttpController;
  * Created by wilqu on 25/05/2018.
  */
 
-public class WebServiceController{
+public class WebServiceController {
 
     public static String recuperarListaOficinas() throws IOException {
         String url = "http://doutorcarango.kinghost.net:21193/estabelecimentos/procurar/id=*&nome=*&cnpj=*&login=*";
 
-        return OkHttpController.getHttp(url,null);
+        return OkHttpController.getHttp(url, null);
+    }
+
+    public static String recuperarListaOficinasCategoria(String categoria, String ranking) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/estabelecimentos/filter/categoria=" + categoria + "&ranking=" + ranking;
+
+        return OkHttpController.getHttp(url, null);
     }
 }

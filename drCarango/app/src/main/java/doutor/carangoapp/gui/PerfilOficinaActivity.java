@@ -1,6 +1,7 @@
 package doutor.carangoapp.gui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.base.testeServidor;
 import doutor.carangoapp.controller.AdapterComentsOficina;
 
-public class PerfilOficinaActivity extends AppCompatActivity {
+public class PerfilOficinaActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tv_NomeNoficina;
     private TextView tv_NotaOficina;
@@ -29,6 +32,7 @@ public class PerfilOficinaActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewComenarios;
     private AdapterComentsOficina mComentariosAdapter;
     private BaseEstabelecimento mOficina;
+    private Button btn_entrar_contato_perfil_oficina, btn_abrir_maps_perfil_oficina;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,8 +43,9 @@ public class PerfilOficinaActivity extends AppCompatActivity {
         ArrayList<BaseComentario> coments=servidor.getComentarios();
         mComentariosAdapter=new AdapterComentsOficina(coments);
 
-        int posisao= Integer.parseInt(getIntent().getCharSequenceExtra("idOficina").toString());
-        mOficina=servidor.getEstabelecimentos().get(posisao);
+        //int posisao= Integer.parseInt(getIntent().getCharSequenceExtra("idOficina").toString());
+        mOficina = (BaseEstabelecimento) getIntent().getSerializableExtra("oficina");
+        //mOficina=servidor.getEstabelecimentos().get(posisao);
         this.setTitle(mOficina.getNome());
 
 
@@ -54,11 +59,16 @@ public class PerfilOficinaActivity extends AppCompatActivity {
         tv_EnderecoOficina=findViewById(R.id.tv_endereco_oficina_perfil);
         tv_TelefoneNoficina=findViewById(R.id.tv_telefone_oficina_perfil);
         tv_promocoes=findViewById(R.id.tv_promo_perfil_oficina);
+        btn_abrir_maps_perfil_oficina = findViewById(R.id.btn_abrir_maps_perfil_oficina);
+        btn_entrar_contato_perfil_oficina = findViewById(R.id.btn_entrar_contato_perfil_oficina);
+
+        btn_abrir_maps_perfil_oficina.setOnClickListener(this);
+        btn_entrar_contato_perfil_oficina.setOnClickListener(this);
 
         tv_promocoes.setText("10 % de desconto na troca de óleo");
         tv_NomeNoficina.setText(mOficina.getNome());
         tv_NotaOficina.setText(Double.toString(mOficina.getRankingServico()));
-        tv_TelefoneNoficina.setText(mOficina.getTelefone());
+        //tv_TelefoneNoficina.setText(mOficina.getTelefone());
         setEnderecoOficinaOnTextView();
 
 
@@ -145,4 +155,22 @@ public class PerfilOficinaActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_abrir_maps_perfil_oficina:
+                Uri gmmIntentUri = Uri.parse("geo:-8.05428,-34.8813");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+                break;
+            case R.id.btn_entrar_contato_perfil_oficina:
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+tv_TelefoneNoficina.getText().toString().replace("-","")));
+                startActivity(intent);
+                break;
+        }
+    }
 }

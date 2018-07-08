@@ -56,8 +56,9 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         BaseEstabelecimento oficina = mOficinas.get(position);
         holder.getmNomeOficina().setText(oficina.getNome());
         holder.getmMediaAvaliacoes().setText(Double.toString(oficina.getRankingServico()));
-        holder.getmNumeroComentarios().setText(" (" + r.nextInt(100) + ")");
-        holder.getmNumeroAvaliacoes().setText(" (" + Integer.toString(r.nextInt(100)) + ")");
+        //holder.getmNumeroComentarios().setText(" (" + r.nextInt(100) + ")");
+        holder.getmNumeroComentarios().setText(Double.toString(oficina.getNumeroComentarios()));
+        holder.getmNumeroAvaliacoes().setText(Double.toString(oficina.getNumeroAvaliacoes()));
 
         //gera randomicamente cor para circulo na view
         GradientDrawable background = (GradientDrawable) holder.getmCircleOficinaList().getBackground();

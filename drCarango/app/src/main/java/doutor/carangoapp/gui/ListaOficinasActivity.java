@@ -36,6 +36,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     private ToggleButton mButtonViewDistancia;
     private String JSonListOficinas;
     private static String mCategoria;
+    private static String mRanking = "1";
 
     private String jsonString;
     private ArrayList<BaseEstabelecimento> arrayOficinas;
@@ -52,6 +53,8 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         mButtonViewDistancia.setOnClickListener(this);
         mButtonViewPreco.setOnClickListener(this);
         mButtonViewAgilidade.setOnClickListener(this);
+
+        mButtonViewPreco.setChecked(true);
 
 
         Intent intent=getIntent();
@@ -114,8 +117,8 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
                 BaseEstabelecimento estabelecimento=new BaseEstabelecimento();
                 estabelecimento.setId(oficina.getInt("id"));
                 estabelecimento.setNome(oficina.getString("nome"));
-                estabelecimento.setCpf(oficina.getString("cnpj"));
-                estabelecimento.setEmail(oficina.getString("email"));
+                //estabelecimento.setCpf(oficina.getString("cnpj"));
+                //estabelecimento.setEmail(oficina.getString("email"));
                 estabelecimento.setRua(oficina.getString("rua"));
                 estabelecimento.setNumero(oficina.getString("numero"));
                 estabelecimento.setBairro(oficina.getString("bairro"));
@@ -124,9 +127,12 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
                 estabelecimento.setEstado(oficina.getString("estado"));
                 estabelecimento.setPais(oficina.getString("pais"));
                 estabelecimento.setComplemento(oficina.getString("complemento"));
-                estabelecimento.setRankingAgilidade(Double.parseDouble(oficina.getString("rankingAgilidade")));
-                estabelecimento.setRankingCustoBeneficio(Double.parseDouble(oficina.getString("rankingCustoBeneficio")));
-                estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("rankingServico")));
+                //estabelecimento.setRankingAgilidade(Double.parseDouble(oficina.getString("rankingAgilidade")));
+                //estabelecimento.setRankingCustoBeneficio(Double.parseDouble(oficina.getString("rankingCustoBeneficio")));
+                //estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("rankingServico")));
+                estabelecimento.setNumeroAvaliacoes(Double.parseDouble(oficina.getString("numeroAvaliacoes")));
+                estabelecimento.setNumeroComentarios(Double.parseDouble(oficina.getString("numeroComentarios")));
+                estabelecimento.setNumeroPromocoes(Double.parseDouble(oficina.getString("numeroPromocoes")));
                 oficinas.add(estabelecimento);
             }
 
@@ -183,16 +189,16 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     }
 
     private void getCategoriaClicada(String categoria) {
-        if(categoria.equals("Troca de Óleo")){
-            mCategoria="Troca de Oleo";
+        if(categoria.equals("Troca de oleo")){
+            mCategoria="Troca de oleo";
         }
         if(categoria.equals("Reparo")){
             mCategoria="Reparo";
         }
-        if(categoria.equals("Revisão")){
-            mCategoria="Revisão";
+        if(categoria.equals("Revisao")){
+            mCategoria="Revisao";
         }
-        if(categoria.equals("bateria")){
+        if(categoria.equals("Bateria")){
             mCategoria="Bateria";
         }
     }
@@ -203,31 +209,35 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onItemClick(int position) {
         Intent perfilOficinaIntent=new Intent(this,PerfilOficinaActivity.class);
-        perfilOficinaIntent.putExtra("idOficina",Integer.toString(position));
+        //perfilOficinaIntent.putExtra("idOficina",Integer.toString(position));
+        perfilOficinaIntent.putExtra("oficina",arrayOficinas.get(position));
         startActivity(perfilOficinaIntent);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_preco:{
+            case R.id.btn_preco:
                 //codigo para ordenar lista por preco
                 mButtonViewDistancia.setChecked(false);
                 mButtonViewAgilidade.setChecked(false);
+                mRanking = "2";
                 break;
-            }
-            case R.id.btn_agilidade:{
+            case R.id.btn_agilidade:
                 //codigopara ordenar lista por agilidade
                 mButtonViewPreco.setChecked(false);
                 mButtonViewDistancia.setChecked(false);
-                break;            }
-            case R.id.btn_distancia:{
+                mRanking = "1";
+                break;
+            case R.id.btn_distancia:
                 //codigo para ordenar lista por distancia
                 mButtonViewPreco.setChecked(false);
                 mButtonViewAgilidade.setChecked(false);
+                mRanking = "3";
                 break;
-            }
         }
+        AsynListarOficinas async = new AsynListarOficinas(ListaOficinasActivity.this);
+        async.execute();
     }
 
     @Override
@@ -267,7 +277,8 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         protected Long doInBackground(Object... objects) {
 
             try{
-                jsonString = WebServiceController.recuperarListaOficinas();
+                //jsonString = WebServiceController.recuperarListaOficinas();
+                jsonString = WebServiceController.recuperarListaOficinasCategoria(mCategoria,mRanking);
 
                 arrayOficinas = getOficinasFromJson(jsonString);
                 myActivity.runOnUiThread(new Runnable() {

@@ -1,11 +1,13 @@
 package doutor.carangoapp.base;
 
 
+import java.io.Serializable;
+
 /**
  * Created by wilqu on 25/05/2018.
  */
 
-public class BaseEstabelecimento {
+public class BaseEstabelecimento implements Serializable {
 
     private int id;
     private String nome;
@@ -25,7 +27,34 @@ public class BaseEstabelecimento {
     private double rankingAgilidade;
     private double rankingCustoBeneficio;
     private double rankingServico;
+    private double numeroAvaliacoes;
+    private double numeroComentarios;
+    private double numeroPromocoes;
     private boolean isParceira;
+
+    public double getNumeroAvaliacoes() {
+        return numeroAvaliacoes;
+    }
+
+    public void setNumeroAvaliacoes(double numeroAvaliacoes) {
+        this.numeroAvaliacoes = numeroAvaliacoes;
+    }
+
+    public double getNumeroComentarios() {
+        return numeroComentarios;
+    }
+
+    public void setNumeroComentarios(double numeroComentarios) {
+        this.numeroComentarios = numeroComentarios;
+    }
+
+    public double getNumeroPromocoes() {
+        return numeroPromocoes;
+    }
+
+    public void setNumeroPromocoes(double numeroPromocoes) {
+        this.numeroPromocoes = numeroPromocoes;
+    }
 
     public boolean isParceira() {
         return isParceira;
