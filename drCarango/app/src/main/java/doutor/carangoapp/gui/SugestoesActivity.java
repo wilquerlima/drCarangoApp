@@ -68,7 +68,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.v_category_oil:
                 Intent intent=new Intent(this,ListaOficinasActivity.class);
-                intent.putExtra("categoria","Troca de Óleo");
+                intent.putExtra("categoria","Troca de oleo");
                 startActivity(intent);
                 break;
 
@@ -81,7 +81,7 @@ public class SugestoesActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.v_category_revisao:
                 Intent intent3=new Intent(this,ListaOficinasActivity.class);
-                intent3.putExtra("categoria","Revisão");
+                intent3.putExtra("categoria","Revisao");
                 startActivity(intent3);
                 break;
 

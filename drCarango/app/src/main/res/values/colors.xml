@@ -6,5 +6,6 @@
     <color name="cor_btn_avalie_oficina">#2d9cdb</color>
     <color name="cor_btn_motorista">#00acea</color>
     <color name="cor_btn_oficina">#00efd1</color>
+    <color name="cor_hint">#839BB1</color>
 
 </resources>

@@ -1,11 +1,13 @@
 package doutor.carangoapp.base;
 
 
+import java.io.Serializable;
+
 /**
  * Created by wilqu on 25/05/2018.
  */
 
-public class BaseEstabelecimento {
+public class BaseEstabelecimento implements Serializable {
 
     private int id;
     private String nome;
@@ -25,45 +27,42 @@ public class BaseEstabelecimento {
     private double rankingAgilidade;
     private double rankingCustoBeneficio;
     private double rankingServico;
-    private int numeroAvaliacoes;
-    private int numeroComentarios;
+    private double numeroAvaliacoes;
+    private double numeroComentarios;
+    private double numeroPromocoes;
+    private boolean isParceira;
 
-    public int getNumeroAvaliacoes() {
+    public double getNumeroAvaliacoes() {
         return numeroAvaliacoes;
     }
 
-    public void setNumeroAvaliacoes(int numeroAvaliacoes) {
+    public void setNumeroAvaliacoes(double numeroAvaliacoes) {
         this.numeroAvaliacoes = numeroAvaliacoes;
     }
 
-    public int getNumeroComentarios() {
+    public double getNumeroComentarios() {
         return numeroComentarios;
     }
 
-    public void setNumeroComentarios(int numeroComentarios) {
+    public void setNumeroComentarios(double numeroComentarios) {
         this.numeroComentarios = numeroComentarios;
     }
 
-    public int getNumeroPromocoes() {
+    public double getNumeroPromocoes() {
         return numeroPromocoes;
     }
 
-    public void setNumeroPromocoes(int numeroPromocoes) {
+    public void setNumeroPromocoes(double numeroPromocoes) {
         this.numeroPromocoes = numeroPromocoes;
     }
 
-    private int numeroPromocoes;
-
-    public int getCredenciada() {
-        return Credenciada;
+    public boolean isParceira() {
+        return isParceira;
     }
 
-    public void setCredenciada(int credenciada) {
-        Credenciada = credenciada;
+    public void setParceira(boolean parceira) {
+        isParceira = parceira;
     }
-
-    private int Credenciada;
-
 
     public int getId() {
         return id;

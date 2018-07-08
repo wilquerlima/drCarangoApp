@@ -1,6 +1,7 @@
 package doutor.carangoapp.gui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +22,8 @@ import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.base.testeServidor;
 import doutor.carangoapp.controller.AdapterComentsOficina;
 
-public class PerfilOficinaActivity extends AppCompatActivity implements View.OnClickListener{
+public class PerfilOficinaActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private View btn_EntrarContato;
-    private View btn_AbrirMaps;
-    private View btn_AvaliarOficina;
     private TextView tv_NomeNoficina;
     private TextView tv_NotaOficina;
     private TextView tv_EnderecoOficina;
@@ -34,30 +32,25 @@ public class PerfilOficinaActivity extends AppCompatActivity implements View.OnC
     private RecyclerView mRecyclerViewComenarios;
     private AdapterComentsOficina mComentariosAdapter;
     private BaseEstabelecimento mOficina;
+    private Button btn_entrar_contato_perfil_oficina, btn_abrir_maps_perfil_oficina;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        setContentView(R.layout.activity_pefiloficina);
         super.onCreate(savedInstanceState);
-
         testeServidor servidor=new testeServidor();
         servidor.SetupEstabelecimentoTest();
         servidor.setUpComentariosTeste();
         ArrayList<BaseComentario> coments=servidor.getComentarios();
         mComentariosAdapter=new AdapterComentsOficina(coments);
 
-        int posisao= Integer.parseInt(getIntent().getCharSequenceExtra("idOficina").toString());
-        mOficina=servidor.getEstabelecimentos().get(posisao);
+        //int posisao= Integer.parseInt(getIntent().getCharSequenceExtra("idOficina").toString());
+        mOficina = (BaseEstabelecimento) getIntent().getSerializableExtra("oficina");
+        //mOficina=servidor.getEstabelecimentos().get(posisao);
         this.setTitle(mOficina.getNome());
 
-        btn_AvaliarOficina=findViewById(R.id.btn_avalie_oficina);
-        btn_AbrirMaps=findViewById(R.id.btn_abrir_maps_perfil_oficina);
-        btn_EntrarContato=findViewById(R.id.btn_entrar_contato_perfil_oficina);
-        btn_EntrarContato.setOnClickListener(this);
-        btn_AbrirMaps.setOnClickListener(this);
-        btn_AvaliarOficina.setOnClickListener(this);
 
 
+        setContentView(R.layout.activity_pefiloficina);
 
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
@@ -66,11 +59,16 @@ public class PerfilOficinaActivity extends AppCompatActivity implements View.OnC
         tv_EnderecoOficina=findViewById(R.id.tv_endereco_oficina_perfil);
         tv_TelefoneNoficina=findViewById(R.id.tv_telefone_oficina_perfil);
         tv_promocoes=findViewById(R.id.tv_promo_perfil_oficina);
+        btn_abrir_maps_perfil_oficina = findViewById(R.id.btn_abrir_maps_perfil_oficina);
+        btn_entrar_contato_perfil_oficina = findViewById(R.id.btn_entrar_contato_perfil_oficina);
+
+        btn_abrir_maps_perfil_oficina.setOnClickListener(this);
+        btn_entrar_contato_perfil_oficina.setOnClickListener(this);
 
         tv_promocoes.setText("10 % de desconto na troca de óleo");
         tv_NomeNoficina.setText(mOficina.getNome());
         tv_NotaOficina.setText(Double.toString(mOficina.getRankingServico()));
-        tv_TelefoneNoficina.setText(mOficina.getTelefone());
+        //tv_TelefoneNoficina.setText(mOficina.getTelefone());
         setEnderecoOficinaOnTextView();
 
 
@@ -159,23 +157,20 @@ public class PerfilOficinaActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        int id=v.getId();
-
-        switch (id){
-            case(R.id.btn_avalie_oficina):
-                Intent intent=new Intent(this,AvaliacaoCustoActivity.class);
+        switch (v.getId()){
+            case R.id.btn_abrir_maps_perfil_oficina:
+                Uri gmmIntentUri = Uri.parse("geo:-8.05428,-34.8813");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+                break;
+            case R.id.btn_entrar_contato_perfil_oficina:
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+tv_TelefoneNoficina.getText().toString().replace("-","")));
                 startActivity(intent);
                 break;
-            case(R.id.btn_abrir_maps_perfil_oficina):
-                break;
-            case(R.id.btn_entrar_contato_perfil_oficina):
-                break;
         }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt("id_oficina",mOficina.getId());
-        super.onSaveInstanceState(outState);
     }
 }

@@ -7,6 +7,7 @@
     <string name="label_cadastro">Cadastro</string>
     <string name="notification">notification</string>
     <string name="label_menu">Dr. Carango</string>
+    <string name="label_recuperar_senha">Recuperar senha</string>
     <string name="sugoestao_servicos">Qual serviço \n você precisa agora ?</string>
     <string name="troca_de_oleo">Troca de óleo</string>
     <string name="title_activity_oficina_perfil">OficinaPerfilActivity</string>
@@ -114,10 +115,10 @@
     <string name="txt_possui_cadastro">Já possui uma conta? <u> Entre aqui.</u></string>
     <string name="txt_login">Entrar</string>
     <string name="txt_cadastrar">Criar Conta</string>
-    <string name="avalie_esta_oficina">Avalie esta oficina</string>
-    <string name="pr_ximo">PRÓXIMO</string>
-    <string name="concluido">Concluído</string>
-    <string name="promocoes">Promoções</string>
+    <string name="txt_redefinir_senha">Enviar</string>
+    <string name="txt_recuperar_senha">Recuperação de senha</string>
+    <string name="txt_informativo_recuperar">Enviaremos um email com instruções de como redefinir sua senha.</string>
+
 
 
 </resources>

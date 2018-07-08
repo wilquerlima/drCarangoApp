@@ -17,15 +17,9 @@
             android:id="@+id/iv_logo_inicial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:src="@drawable/logo" />
-
-        <ImageView
-            android:id="@+id/iv_carango"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/doutorcarango" />
 
     </LinearLayout>
 
@@ -42,9 +36,10 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
+            android:inputType="textEmailAddress"
             android:hint="Seu e-mail"
             android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+            android:textColorHint="@color/cor_hint" />
 
         <EditText
             android:id="@+id/edit_senha"
@@ -56,17 +51,19 @@
             android:hint="Sua senha"
             android:inputType="textPassword"
             android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+            android:textColorHint="@color/cor_hint" />
 
         <Button
             android:id="@+id/btn_login"
             style="@style/btn_introducao_motorista"
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:padding="15dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:enabled="false"
             android:text="@string/txt_login" />
 
         <TextView
