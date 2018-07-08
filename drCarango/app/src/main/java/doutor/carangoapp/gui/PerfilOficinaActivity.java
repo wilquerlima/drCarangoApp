@@ -172,4 +172,10 @@ public class PerfilOficinaActivity extends AppCompatActivity implements View.OnC
                 break;
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("id_oficina",mOficina.getId());
+        super.onSaveInstanceState(outState);
+    }
 }

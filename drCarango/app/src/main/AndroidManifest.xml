@@ -29,12 +29,10 @@
             android:label="@string/label_menu"
             android:parentActivityName=".gui.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:theme="@style/AppTheme"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
             android:name=".gui.ListaOficinasActivity"
@@ -44,11 +42,18 @@
             android:parentActivityName=".gui.ListaOficinasActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".gui.PerfilUsuarioOficinaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+
+        </activity>
         <activity android:name=".gui.PrefilUsuarioActivity" />
         <activity android:name=".gui.AvaliacaoCustoActivity" />
         <activity android:name=".gui.AvaliacaoQualidadeActivity" />
         <activity android:name=".gui.AvalicaoAgilidadeActivity" />
-        <activity android:name=".gui.AvaliacaoComentarioActivity"></activity>
+        <activity android:name=".gui.AvaliacaoComentarioActivity" />
+        <activity android:name=".gui.EditarPromocoes"></activity>
     </application>
 
 </manifest>

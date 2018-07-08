@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.animation.IntArrayEvaluator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,14 +19,13 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
     private ToggleButton mStar4;
     private ToggleButton mStar5;
     private ToggleButton[] mEstrelas;
-
+    private int mAvaliacaoAgilidade;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avalicao_agilidade);
-
         setVariables();
 
         setOnClickListenerOnVariables();
@@ -71,6 +71,7 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
                 mStar3.setChecked(false);
                 mStar4.setChecked(false);
                 mStar5.setChecked(false);
+                mAvaliacaoAgilidade=1;
                 break;
 
             case(R.id.iv_star_2_agilidade):
@@ -79,6 +80,7 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
                 mStar3.setChecked(false);
                 mStar4.setChecked(false);
                 mStar5.setChecked(false);
+                mAvaliacaoAgilidade=2;
                 break;
 
             case(R.id.iv_star_3_agilidade):
@@ -87,6 +89,7 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
                 mStar3.setChecked(true);
                 mStar4.setChecked(false);
                 mStar5.setChecked(false);
+                mAvaliacaoAgilidade=3;
                 break;
 
             case(R.id.iv_star_4_agilidade):
@@ -95,6 +98,7 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
                 mStar3.setChecked(true);
                 mStar4.setChecked(true);
                 mStar5.setChecked(false);
+                mAvaliacaoAgilidade=4;
                 break;
 
             case(R.id.iv_star_5_agilidade):
@@ -103,12 +107,18 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
                 mStar3.setChecked(true);
                 mStar4.setChecked(true);
                 mStar5.setChecked(true);
+                mAvaliacaoAgilidade=5;
                 break;
             case(R.id.btn_proximo_agilidade):
 
                 int avaliacao=getAvaliacao();
-                //envia ou guarda informacao de avaliacao
+                mAvaliacaoAgilidade=avaliacao;
+
+                Intent intentIniciouEstaActivity=getIntent();
                 Intent intent=new Intent(this,AvaliacaoComentarioActivity.class);
+                intent.putExtra("avaliacao_agilidade",mAvaliacaoAgilidade);
+                intent.putExtra("avaliacao_custo",intentIniciouEstaActivity.getIntExtra("avaliacao_custo",0));
+                intent.putExtra("avaliacao_qualidade",intentIniciouEstaActivity.getIntExtra("avaliacao_qualidade",0));
                 startActivity(intent);
         }
 
@@ -122,4 +132,6 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
         }
         return 5;
     }
+
+
 }

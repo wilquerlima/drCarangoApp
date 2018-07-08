@@ -97,7 +97,7 @@
                         android:textSize="18sp" />
 
                     <View
-                        android:id="@+id/v_line_divisor_1"
+                        android:id="@+id/v_line_perfil_oficina_1"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:layout_below="@id/tv_endereco_oficina_perfil"
@@ -110,7 +110,7 @@
                         android:id="@+id/iv_fone_icone_oficina"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_below="@id/v_line_divisor_1"
+                        android:layout_below="@id/v_line_perfil_oficina_1"
                         android:layout_margin="15dp"
                         android:src="@mipmap/ic_fone" />
 
@@ -118,7 +118,7 @@
                         android:id="@+id/tv_telefone_oficina_perfil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/v_line_divisor_1"
+                        android:layout_below="@id/v_line_perfil_oficina_1"
                         android:layout_marginEnd="10dp"
                         android:layout_marginTop="15dp"
                         android:layout_toEndOf="@id/iv_fone_icone_oficina"

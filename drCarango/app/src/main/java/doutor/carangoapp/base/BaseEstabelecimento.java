@@ -25,15 +25,45 @@ public class BaseEstabelecimento {
     private double rankingAgilidade;
     private double rankingCustoBeneficio;
     private double rankingServico;
-    private boolean isParceira;
+    private int numeroAvaliacoes;
+    private int numeroComentarios;
 
-    public boolean isParceira() {
-        return isParceira;
+    public int getNumeroAvaliacoes() {
+        return numeroAvaliacoes;
     }
 
-    public void setParceira(boolean parceira) {
-        isParceira = parceira;
+    public void setNumeroAvaliacoes(int numeroAvaliacoes) {
+        this.numeroAvaliacoes = numeroAvaliacoes;
     }
+
+    public int getNumeroComentarios() {
+        return numeroComentarios;
+    }
+
+    public void setNumeroComentarios(int numeroComentarios) {
+        this.numeroComentarios = numeroComentarios;
+    }
+
+    public int getNumeroPromocoes() {
+        return numeroPromocoes;
+    }
+
+    public void setNumeroPromocoes(int numeroPromocoes) {
+        this.numeroPromocoes = numeroPromocoes;
+    }
+
+    private int numeroPromocoes;
+
+    public int getCredenciada() {
+        return Credenciada;
+    }
+
+    public void setCredenciada(int credenciada) {
+        Credenciada = credenciada;
+    }
+
+    private int Credenciada;
+
 
     public int getId() {
         return id;

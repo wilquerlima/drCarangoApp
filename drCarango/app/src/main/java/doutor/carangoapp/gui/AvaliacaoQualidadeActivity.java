@@ -18,13 +18,13 @@ public class AvaliacaoQualidadeActivity extends AppCompatActivity implements Vie
     private ToggleButton mStar4;
     private ToggleButton mStar5;
     private ToggleButton[] mEstrelas;
+    private int mAvaliacaoQualidade;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliacao_qualidade);
-
         setVariables();
 
         setOnClickListenerOnVariables();
@@ -47,6 +47,7 @@ public class AvaliacaoQualidadeActivity extends AppCompatActivity implements Vie
         mStar4.setOnClickListener(this);
         mStar5.setOnClickListener(this);
         mBtnProximo.setOnClickListener(this);
+
     }
 
     private void setVariables() {
@@ -106,8 +107,12 @@ public class AvaliacaoQualidadeActivity extends AppCompatActivity implements Vie
             case(R.id.btn_proximo_qualidade):
 
                 int avaliacao=getAvaliacao();
-                //envia ou guarda informacao de avaliacao
+                mAvaliacaoQualidade=avaliacao;
+
                 Intent intent=new Intent(this,AvalicaoAgilidadeActivity.class);
+                intent.putExtra("avaliacao_qualidade",mAvaliacaoQualidade);
+                intent.putExtra("avaliacao_custo",getIntent().getIntExtra("avaliacao_custo",0));
+
                 startActivity(intent);
         }
 
@@ -121,5 +126,10 @@ public class AvaliacaoQualidadeActivity extends AppCompatActivity implements Vie
             }
         }
         return 5;
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("avaliacao_qualidade",mAvaliacaoQualidade);
+        super.onSaveInstanceState(outState);
     }
 }

@@ -20,13 +20,13 @@ public class AvaliacaoCustoActivity extends AppCompatActivity implements View.On
     private ToggleButton mStar5;
     private Button mBtnProximo;
     private ToggleButton[] mEstrelas;
+    private int mAvaliacaoCusto;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliacao_custo);
-
         setVariables();
 
         setOnClickListenerOnVariables();
@@ -108,13 +108,15 @@ public class AvaliacaoCustoActivity extends AppCompatActivity implements View.On
             case(R.id.btn_proximo_custo):
 
                 int avaliacao=getAvaliacao();
-                //envia ou guarda informacao de avaliacao
+                mAvaliacaoCusto=avaliacao;
                 Intent intent=new Intent(this,AvaliacaoQualidadeActivity.class);
+                intent.putExtra("avaliacao_custo",mAvaliacaoCusto);
                 startActivity(intent);
         }
 
 
     }
+
 
     private int getAvaliacao() {
         for(int i=0;i<mEstrelas.length;i++){

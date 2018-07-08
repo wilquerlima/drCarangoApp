@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -63,18 +64,21 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         this.setTitle(title);
         Bundle args=new Bundle();
         args.putString("categoria",mCategoria);
-
-        AsynListarOficinas async = new AsynListarOficinas(ListaOficinasActivity.this);
-        async.execute();
-
-        //getSupportLoaderManager().initLoader(0, args, this).forceLoad();
-
+        mAdapterOficinas=new AdapterOficinas(this);
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
 
         mRecyclerView=findViewById(R.id.recycler_view_lista_oficinas);
         mRecyclerView.setLayoutManager(manager);
 
-        mAdapterOficinas=new AdapterOficinas(this);
+        AsynListarOficinas async = new AsynListarOficinas(ListaOficinasActivity.this);
+        async.execute("Troca%20de%20oleo","1");
+
+
+        //getSupportLoaderManager().initLoader(0, args, this).forceLoad();
+
+
+
+
         //mAdapterOficinas.setmOficinas(SetupAdapterTest());
         //mAdapterOficinas.setmOficinas(SetupAdapterTest());
         //mRecyclerView.setAdapter(mAdapterOficinas);
@@ -114,8 +118,6 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
                 BaseEstabelecimento estabelecimento=new BaseEstabelecimento();
                 estabelecimento.setId(oficina.getInt("id"));
                 estabelecimento.setNome(oficina.getString("nome"));
-                estabelecimento.setCpf(oficina.getString("cnpj"));
-                estabelecimento.setEmail(oficina.getString("email"));
                 estabelecimento.setRua(oficina.getString("rua"));
                 estabelecimento.setNumero(oficina.getString("numero"));
                 estabelecimento.setBairro(oficina.getString("bairro"));
@@ -124,9 +126,10 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
                 estabelecimento.setEstado(oficina.getString("estado"));
                 estabelecimento.setPais(oficina.getString("pais"));
                 estabelecimento.setComplemento(oficina.getString("complemento"));
-                estabelecimento.setRankingAgilidade(Double.parseDouble(oficina.getString("rankingAgilidade")));
-                estabelecimento.setRankingCustoBeneficio(Double.parseDouble(oficina.getString("rankingCustoBeneficio")));
-                estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("rankingServico")));
+                estabelecimento.setCredenciada(Integer.parseInt(oficina.getString("credencia")));
+                estabelecimento.setNumeroAvaliacoes(Integer.parseInt(oficina.getString("numeroAvaliacoes")));
+                estabelecimento.setNumeroComentarios(Integer.parseInt(oficina.getString("numeroComentarios")));
+                estabelecimento.setNumeroPromocoes(Integer.parseInt(oficina.getString("numeroPromocoes")));
                 oficinas.add(estabelecimento);
             }
 
@@ -134,57 +137,17 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
 
 
         }catch (Exception e ){
+            Log.d("ListaOficinas",e.getMessage());
             return null;
         }
 
     }
 
-    private ArrayList<BaseEstabelecimento> SetupAdapterTest() {
 
-        ArrayList<BaseEstabelecimento> listaOficinas=new ArrayList<BaseEstabelecimento>();
-        BaseEstabelecimento oficina1=new BaseEstabelecimento();
-        oficina1.setNome("Oficina S. João");
-        oficina1.setRankingServico(4.98);
-        BaseEstabelecimento oficina2=new BaseEstabelecimento();
-        oficina2.setNome("Central Auto Center");
-        oficina2.setRankingServico(4.84);
-        BaseEstabelecimento oficina3=new BaseEstabelecimento();
-        oficina3.setNome("Perfet Tecnologia");
-        oficina3.setRankingServico(4.75);
-        BaseEstabelecimento oficina4=new BaseEstabelecimento();
-        oficina4.setNome("Oficina Calango");
-        oficina4.setRankingServico(4.24);
-        BaseEstabelecimento oficina5=new BaseEstabelecimento();
-        oficina5.setNome("Oficina do Amigo");
-        oficina5.setRankingServico(3.86);
-        BaseEstabelecimento oficina6=new BaseEstabelecimento();
-        oficina6.setNome("Oficina do Manuca");
-        oficina6.setRankingServico(3.80);
-        BaseEstabelecimento oficina7=new BaseEstabelecimento();
-        oficina7.setNome("Lojão do Petróleo");
-        oficina7.setRankingServico(3.23);
-        BaseEstabelecimento oficina8=new BaseEstabelecimento();
-        oficina8.setNome("Biauto");
-        oficina8.setRankingServico(2.45);
-        BaseEstabelecimento oficina9=new BaseEstabelecimento();
-        oficina9.setNome("Oficina Auto Center Casa Forte");
-        oficina9.setRankingServico(2.33);
-        listaOficinas.add(oficina1);
-        listaOficinas.add(oficina2);
-        listaOficinas.add(oficina3);
-        listaOficinas.add(oficina4);
-        listaOficinas.add(oficina5);
-        listaOficinas.add(oficina6);
-        listaOficinas.add(oficina7);
-        listaOficinas.add(oficina8);
-        listaOficinas.add(oficina9);
-
-        return listaOficinas;
-    }
 
     private void getCategoriaClicada(String categoria) {
         if(categoria.equals("Troca de Óleo")){
-            mCategoria="Troca de Oleo";
+            mCategoria="Troca de oleo";
         }
         if(categoria.equals("Reparo")){
             mCategoria="Reparo";
@@ -211,18 +174,18 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_preco:{
-                //codigo para ordenar lista por preco
+                //adicionar codigo para ordenar lista por preco
                 mButtonViewDistancia.setChecked(false);
                 mButtonViewAgilidade.setChecked(false);
                 break;
             }
             case R.id.btn_agilidade:{
-                //codigopara ordenar lista por agilidade
+                //adicionar codigo para ordenar lista por agilidade
                 mButtonViewPreco.setChecked(false);
                 mButtonViewDistancia.setChecked(false);
                 break;            }
             case R.id.btn_distancia:{
-                //codigo para ordenar lista por distancia
+                //adicionar codigo para ordenar lista por distancia
                 mButtonViewPreco.setChecked(false);
                 mButtonViewAgilidade.setChecked(false);
                 break;
@@ -254,7 +217,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         return true;
     }
 
-    private class AsynListarOficinas extends AsyncGenerico<Object,Integer,Long>{
+    private class AsynListarOficinas extends AsyncGenerico<String,Integer,Long>{
 
         Activity myActivity;
 
@@ -264,17 +227,19 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         }
 
         @Override
-        protected Long doInBackground(Object... objects) {
+        protected Long doInBackground(String... params) {
 
             try{
-                jsonString = WebServiceController.recuperarListaOficinas();
+                jsonString = WebServiceController.recuperarListaOficinas(params[0],params[1]);
 
                 arrayOficinas = getOficinasFromJson(jsonString);
                 myActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Log.d("AsynListarOficinas","em run on UI thread");
                         mAdapterOficinas.setmOficinas(arrayOficinas);
                         mRecyclerView.setAdapter(mAdapterOficinas);
+                        Log.d("AsynListarOficinas","setados adapter e recylcer view");
                     }
                 });
 

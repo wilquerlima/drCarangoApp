@@ -75,7 +75,6 @@ public class AdapterComentsOficina extends RecyclerView.Adapter<AdapterComentsOf
         }
 
 
-
         public ViewHolderComentariosOficina(View itemView) {
             super(itemView);
             mNomeUsuario=itemView.findViewById(R.id.tv_nome_comentario_oficina);
