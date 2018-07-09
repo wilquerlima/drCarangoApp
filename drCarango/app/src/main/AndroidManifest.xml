@@ -51,6 +51,24 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".gui.PrefilUsuarioActivity"
             />
+        <activity android:name=".gui.EditarPromocoes"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".gui.PerfilUsuarioOficinaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".gui.AvaliacaoComentarioActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".gui.AvaliacaoQualidadeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".gui.AvalicaoAgilidadeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".gui.AvaliacaoCustoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
 
     </application>
 

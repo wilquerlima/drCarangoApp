@@ -8,12 +8,15 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import doutor.carangoapp.Helper.JsonHandlingHelper;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by wilqu on 25/05/2018.
@@ -50,43 +53,46 @@ public class OkHttpController {
         return jsonObject.toString();
 
     }
+    
+    public static String parseToString(ContentValues c) throws JSONException{
 
+        JSONObject object=new JSONObject();
 
-    public static String parseToString(ContentValues c){
-        StringBuilder s = new StringBuilder();
-        for (String name: c.keySet()) {
+        for (String name : c.keySet()) {
             String value = c.get(name).toString();
-            s.append(name+"="+value+"&");
+            object.accumulate(name,value);
         }
-        if(s.length() > 0){
-            s.deleteCharAt(s.length()-1);
+        return object.toString();
+    }
+
+    public static String parseToStringForGet(ContentValues c) {
+
+        StringBuilder s = new StringBuilder();
+
+        for (String name : c.keySet()) {
+            String value = c.get(name).toString();
+            s.append("/" + value);
         }
         return s.toString();
     }
 
-    public static String parseToStringForGet(ContentValues c){
+    public static String getHttp(String urlBase, ContentValues params) throws IOException {
 
-        StringBuilder s = new StringBuilder();
+        try {
+            OkHttpClient client = new OkHttpClient();
 
-        for (String name: c.keySet()) {
-            String value = c.get(name).toString();
-            s.append("/"+value);
+            if (params != null) {
+                String parametros = parseToStringForGet(params);
+                urlBase = urlBase + parametros;
+            }
+            Request request = new Request.Builder().url(urlBase).build();
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+        } catch (Exception e) {
+            Log.d(TAG, "getHttp: " + e.getMessage() + "///" + e.getStackTrace());
+            return null;
         }
-        return s.toString();
-    }
-    public static String getHttp(String urlBase, ContentValues params) throws IOException{
-        OkHttpClient client = new OkHttpClient();
-
-        if(params != null){
-            String parametros=parseToStringForGet(params);
-            urlBase = urlBase+parametros;
-        }
-
-
-        Request request = new Request.Builder().url(urlBase).build();
-        Response response = client.newCall(request).execute();
-
-        return response.body().string();
     }
 
 }
+
