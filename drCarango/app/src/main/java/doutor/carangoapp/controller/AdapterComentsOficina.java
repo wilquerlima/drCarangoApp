@@ -16,9 +16,7 @@ public class AdapterComentsOficina extends RecyclerView.Adapter<AdapterComentsOf
 
     private ArrayList<BaseComentario> comentarios;
 
-    public AdapterComentsOficina(ArrayList<BaseComentario> coments){
-        this.comentarios=coments;
-    }
+
 
     @Override
     public ViewHolderComentariosOficina onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -73,7 +71,6 @@ public class AdapterComentsOficina extends RecyclerView.Adapter<AdapterComentsOf
         public void setmComentario(TextView mComentario) {
             this.mComentario = mComentario;
         }
-
 
 
         public ViewHolderComentariosOficina(View itemView) {

@@ -15,7 +15,7 @@ public abstract class AsyncGenerico<Object, Integer, Long> extends AsyncTask<Obj
     private Activity myContext;
     public ProgressDialog progressDialog = null;
 
-    public void alertError(String texto) {
+    public void alertError( String texto) {
         final String msg = texto;
         myContext.runOnUiThread(new Runnable() {
             @Override
