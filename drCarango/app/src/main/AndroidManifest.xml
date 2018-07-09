@@ -22,13 +22,11 @@
         <activity
             android:name=".gui.LoginActivity"
             android:label="@string/label_login"
-            android:parentActivityName=".gui.IntroducaoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".gui.CadastroActivity"
             android:label="@string/label_cadastro"
-            android:parentActivityName=".gui.IntroducaoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
@@ -41,7 +39,7 @@
         <activity
             android:name=".gui.SugestoesActivity"
             android:label="@string/label_menu"
-            android:parentActivityName=".gui.LoginActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
