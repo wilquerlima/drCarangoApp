@@ -40,10 +40,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent it = getIntent();
         tipoLogin = it.getStringExtra("tipoLogin");
 
-        txt_esqueceu_senha.setPaintFlags(txt_esqueceu_senha.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        txt_nao_tem_conta.setPaintFlags(txt_nao_tem_conta.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        //txt_esqueceu_senha.setPaintFlags(txt_esqueceu_senha.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        //txt_nao_tem_conta.setPaintFlags(txt_nao_tem_conta.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         btn_login.setOnClickListener(this);
+        txt_esqueceu_senha.setOnClickListener(this);
+        txt_nao_tem_conta.setOnClickListener(this);
     }
 
     @Override
@@ -59,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 //verificar campos
                 if (checkCampos()) {
                     //login sucesso
+                    //salvar o usuario logado no Session.logged
                     startActivity(new Intent(this, SugestoesActivity.class));
                     finish();
                 } else {
@@ -70,12 +73,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.txt_esqueceu_senha:
-
-                break;
-            case R.id.txt_nao_tem_conta:
-                Intent it = new Intent(this, CadastroActivity.class);
+                Intent it = new Intent(this, RecuperarSenhaActivity.class);
                 it.putExtra("tipoLogin", tipoLogin);
                 startActivity(it);
+                finish();
+                break;
+            case R.id.txt_nao_tem_conta:
+                Intent it2 = new Intent(this, CadastroActivity.class);
+                it2.putExtra("tipoLogin", tipoLogin);
+                startActivity(it2);
                 finish();
                 break;
         }

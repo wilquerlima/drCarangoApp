@@ -1,6 +1,7 @@
 package doutor.carangoapp.controller.okHttpController;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,6 +9,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -18,36 +20,37 @@ import okhttp3.Response;
  */
 
 public class OkHttpController {
+    public static final MediaType JSON
+            = MediaType.parse("application/json");
 
-    public static Object postHttp(String url, ContentValues params){
-        OkHttpClient client = new OkHttpClient();
-        String container = parseToString(params);
-        RequestBody body = new FormBody.Builder()
-                .add("container",container)
-                .build();
+    public static String postHttp(String url, ContentValues params) {
 
-        Request request = new Request.Builder()
-                .url(url)//url do serviço
-                .post(body)
-                .build();
-
-        Response response;
         Object jsonObject = null;
-
         try {
-            response = client.newCall(request).execute();
-            JSONObject json = new JSONObject(response.body().string());
-            jsonObject = json.get("");//nome do objeto que vai retornar
+            OkHttpClient client = new OkHttpClient();
+            String container = parseToString(params);
+            RequestBody body = RequestBody.create(JSON,container);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+            Request request = new Request.Builder()
+                    .url(url)//url do serviço
+                    .post(body)
+                    .build();
+
+            Response response;
+
+
+            response = client.newCall(request).execute();
+            jsonObject = new JSONObject(response.body().string());
+            //nome do objeto que vai retornar
+
+        } catch (Exception e) {
+            Log.d("OKhttpController",e.getMessage());
         }
 
-        return jsonObject;
+        return jsonObject.toString();
 
     }
+
 
     public static String parseToString(ContentValues c){
         StringBuilder s = new StringBuilder();
