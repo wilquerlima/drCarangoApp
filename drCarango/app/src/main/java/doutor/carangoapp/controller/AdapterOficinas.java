@@ -53,7 +53,15 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
     public void onBindViewHolder(OficinasViewHolder holder, int position) {
 
         Random r = new Random();
+
         BaseEstabelecimento oficina = mOficinas.get(position);
+        if(oficina.getNumeroPromocoes()==0){
+            holder.mPromocao.setVisibility(View.GONE);
+        }
+        if(!oficina.isParceira()){
+            holder.mOficinaParceira.setVisibility(View.GONE);
+        }
+
         holder.getmNomeOficina().setText(oficina.getNome());
         holder.getmMediaAvaliacoes().setText(Double.toString(oficina.getRankingServico()));
         //holder.getmNumeroComentarios().setText(" (" + r.nextInt(100) + ")");

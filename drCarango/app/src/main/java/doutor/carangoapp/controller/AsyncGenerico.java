@@ -10,13 +10,13 @@ import android.os.AsyncTask;
  * Created by wilqu on 02/07/2018.
  */
 
-public abstract class AsyncGenerico<String, Integer, Long> extends AsyncTask<String, Integer, Long> {
+public abstract class AsyncGenerico<Object, Integer, Long> extends AsyncTask<Object, Integer, Long> {
 
     private Activity myContext;
     public ProgressDialog progressDialog = null;
 
-    public void alertError( java.lang.String texto) {
-        final java.lang.String msg = texto;
+    public void alertError( String texto) {
+        final String msg = texto;
         myContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {

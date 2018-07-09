@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ToggleButton;
 
 import doutor.carangoapp.R;
+import doutor.carangoapp.base.BaseEstabelecimento;
 
 public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,6 +21,8 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
     private ToggleButton mStar5;
     private ToggleButton[] mEstrelas;
     private int mAvaliacaoAgilidade;
+    private int mIdOficina;
+    private BaseEstabelecimento mOficina;
 
 
     @Override
@@ -27,9 +30,9 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avalicao_agilidade);
         setVariables();
-
+        mIdOficina=getIntent().getIntExtra("idOficina",0);
         setOnClickListenerOnVariables();
-
+        mOficina= (BaseEstabelecimento) getIntent().getSerializableExtra("oficina");
         putStarVariablesOnArray();
     }
 
@@ -119,6 +122,8 @@ public class AvalicaoAgilidadeActivity extends AppCompatActivity implements View
                 intent.putExtra("avaliacao_agilidade",mAvaliacaoAgilidade);
                 intent.putExtra("avaliacao_custo",intentIniciouEstaActivity.getIntExtra("avaliacao_custo",0));
                 intent.putExtra("avaliacao_qualidade",intentIniciouEstaActivity.getIntExtra("avaliacao_qualidade",0));
+                intent.putExtra("idOficina",mIdOficina);
+                intent.putExtra("oficina",mOficina);
                 startActivity(intent);
         }
 

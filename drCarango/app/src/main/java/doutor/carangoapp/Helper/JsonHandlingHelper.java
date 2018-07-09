@@ -27,7 +27,7 @@ public class JsonHandlingHelper {
             estabelecimento.setRankingAgilidade(Double.parseDouble(oficina.getString("rankingAgilidade")));
             estabelecimento.setRankingCustoBeneficio(Double.parseDouble(oficina.getString("rankingCustoBeneficio")));
             estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("rankingServico")));
-            estabelecimento.setCredenciada(Integer.parseInt(oficina.getString("credencia")));
+
 
             return estabelecimento;
 

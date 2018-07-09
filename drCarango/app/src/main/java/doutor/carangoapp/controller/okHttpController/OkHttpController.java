@@ -8,7 +8,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import doutor.carangoapp.Helper.JsonHandlingHelper;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -21,47 +23,46 @@ import static android.content.ContentValues.TAG;
  */
 
 public class OkHttpController {
+    public static final MediaType JSON
+            = MediaType.parse("application/json");
 
-    public static Object postHttp(String url, ContentValues params) {
-        OkHttpClient client = new OkHttpClient();
-        String container = parseToString(params);
-        RequestBody body = new FormBody.Builder()
-                .add("container", container)
-                .build();
+    public static String postHttp(String url, ContentValues params) {
 
-        Request request = new Request.Builder()
-                .url(url)//url do serviço
-                .post(body)
-                .build();
-
-        Response response;
         Object jsonObject = null;
-
         try {
-            response = client.newCall(request).execute();
-            JSONObject json = new JSONObject(response.body().string());
-            jsonObject = json.get("");//nome do objeto que vai retornar
+            OkHttpClient client = new OkHttpClient();
+            String container = parseToString(params);
+            RequestBody body = RequestBody.create(JSON,container);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+            Request request = new Request.Builder()
+                    .url(url)//url do serviço
+                    .post(body)
+                    .build();
+
+            Response response;
+
+
+            response = client.newCall(request).execute();
+            jsonObject = new JSONObject(response.body().string());
+            //nome do objeto que vai retornar
+
+        } catch (Exception e) {
+            Log.d("OKhttpController",e.getMessage());
         }
 
-        return jsonObject;
+        return jsonObject.toString();
 
     }
 
-    public static String parseToString(ContentValues c) {
-        StringBuilder s = new StringBuilder();
+    public static String parseToString(ContentValues c) throws JSONException{
+
+        JSONObject object=new JSONObject();
+
         for (String name : c.keySet()) {
             String value = c.get(name).toString();
-            s.append(name + "=" + value + "&");
+            object.accumulate(name,value);
         }
-        if (s.length() > 0) {
-            s.deleteCharAt(s.length() - 1);
-        }
-        return s.toString();
+        return object.toString();
     }
 
     public static String parseToStringForGet(ContentValues c) {

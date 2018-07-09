@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import doutor.carangoapp.R;
+import doutor.carangoapp.base.BaseEstabelecimento;
 
 public class AvaliacaoCustoActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -21,12 +22,16 @@ public class AvaliacaoCustoActivity extends AppCompatActivity implements View.On
     private Button mBtnProximo;
     private ToggleButton[] mEstrelas;
     private int mAvaliacaoCusto;
+    private int mIdOficina;
+    private BaseEstabelecimento mOficina;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliacao_custo);
+        mIdOficina=getIntent().getIntExtra("idOficina",0);
+        mOficina= (BaseEstabelecimento) getIntent().getSerializableExtra("oficina");
         setVariables();
 
         setOnClickListenerOnVariables();
@@ -111,6 +116,8 @@ public class AvaliacaoCustoActivity extends AppCompatActivity implements View.On
                 mAvaliacaoCusto=avaliacao;
                 Intent intent=new Intent(this,AvaliacaoQualidadeActivity.class);
                 intent.putExtra("avaliacao_custo",mAvaliacaoCusto);
+                intent.putExtra("idOficina",mIdOficina);
+                intent.putExtra("oficina",mOficina);
                 startActivity(intent);
         }
 
