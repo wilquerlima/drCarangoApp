@@ -196,7 +196,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPostExecute(Long aLong) {
             super.onPostExecute(aLong);
-            if (!respostaLogin.equals("")){
+            if (!respostaLogin.equals("")) {
                 if (tipoLogin.equalsIgnoreCase("motorista")) {
                     Session.loggedUsuario = getLoggedUsuario(respostaLogin);
                 } else {
@@ -204,7 +204,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
                 }
                 startActivity(new Intent(myActivity, SugestoesActivity.class));
                 finish();
-            }else{
+            } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(myActivity).setCancelable(false);
                 builder.setTitle("Ops");
                 builder.setMessage("Verifique se os dados informados estão corretos.");
@@ -251,41 +251,24 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
     private BaseUsuario getLoggedUsuario(String json) {
         try {
-            JSONObject usuarioJson = new JSONObject(json);
+            JSONArray array = new JSONArray(json);
+            JSONObject usuarioJson = new JSONObject(array.getString(0));
             BaseUsuario usuario = new BaseUsuario();
 
             usuario.setId(usuarioJson.getInt("id"));
             usuario.setNome(usuarioJson.getString("nome"));
             usuario.setEmail(usuarioJson.getString("email"));
-            if (usuarioJson.get("rua") != null) {
-                usuario.setRua(usuarioJson.getString("rua"));
-            }
-            if(usuarioJson.get("numero") != null) {
-                usuario.setNumero(usuarioJson.getString("numero"));
-            }
-            if (usuarioJson.get("bairro") != null) {
-                usuario.setBairro(usuarioJson.getString("bairro"));
-            }
-            if (usuarioJson.get("cidade") != null) {
-                usuario.setCidade(usuarioJson.getString("cidade"));
-            }
-            if (usuarioJson.get("cep") != null) {
-                usuario.setCep(usuarioJson.getString("cep"));
-            }
-            if (usuarioJson.get("estado") != null) {
-                usuario.setEstado(usuarioJson.getString("estado"));
-            }
-            if (usuarioJson.get("pais") != null) {
-                usuario.setPais(usuarioJson.getString("pais"));
-            }
-            if (usuarioJson.get("complemento") != null) {
-                usuario.setComplemento(usuarioJson.getString("complemento"));
-            }
+            usuario.setRua(usuarioJson.getString("rua"));
+            usuario.setNumero(usuarioJson.getString("numero"));
+            usuario.setBairro(usuarioJson.getString("bairro"));
+            usuario.setCidade(usuarioJson.getString("cidade"));
+            usuario.setCep(usuarioJson.getString("cep"));
+            usuario.setEstado(usuarioJson.getString("estado"));
+            usuario.setPais(usuarioJson.getString("pais"));
+            usuario.setComplemento(usuarioJson.getString("complemento"));
             usuario.setTelefone1(usuarioJson.getString("telefone1"));
+            usuario.setTelefone2(usuarioJson.getString("telefone2"));
 
-            if (usuarioJson.get("telefone2") != null) {
-                usuario.setTelefone2(usuarioJson.getString("telefone2"));
-            }
 
             return usuario;
         } catch (JSONException e) {

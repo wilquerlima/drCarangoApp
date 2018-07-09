@@ -18,9 +18,9 @@ import okhttp3.RequestBody;
 public class WebServiceController {
 
 
-    public static String recuperarInformacoesOficina(int id) throws IOException{
+    public static String recuperarInformacoesOficina(int id) throws IOException {
 
-        String url="http://doutorcarango.kinghost.net:21015/estabelecimentos/procurar/id="+id+"&nome=*&email=*";
+        String url = "http://doutorcarango.kinghost.net:21015/estabelecimentos/procurar/id=" + id + "&nome=*&email=*";
 
         return OkHttpController.getHttp(url, null);
     }
@@ -44,7 +44,7 @@ public class WebServiceController {
     }
 
     public static String login(String email, String senha) throws IOException {
-        String url = "http://doutorcarango.kinghost.net:21015/login";
+        String url = "http://doutorcarango.kinghost.net:21015/usuarios/login";
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);
@@ -53,52 +53,54 @@ public class WebServiceController {
         return OkHttpController.postHttp(url, contentValues);
     }
 
-    public static String enviarAvaliacaoCusto(int IdOficina,int avaliacaoCusto,int idUsuario)throws IOException{
-        String url="http://doutorcarango.kinghost.net:21015/avaliacoes/custo_beneficio/cadastrar";
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("id_estabelecimentos",IdOficina);
-        contentValues.put("id_usuarios",idUsuario);
-        contentValues.put("nota",avaliacaoCusto);
+    public static String enviarAvaliacaoCusto(int IdOficina, int avaliacaoCusto, int idUsuario) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/avaliacoes/custo_beneficio/cadastrar";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id_estabelecimentos", IdOficina);
+        contentValues.put("id_usuarios", idUsuario);
+        contentValues.put("nota", avaliacaoCusto);
 
-        return (String) OkHttpController.postHttp(url,contentValues);
-    }
-    public static String enviarAvaliacaoAgilidade(int IdOficina,int avaliacaoAgilidade,int idUsuario)throws IOException{
-        String url="http://doutorcarango.kinghost.net:21015/avaliacoes/agilidade/cadastrar";
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("id_estabelecimentos",IdOficina);
-        contentValues.put("id_usuarios",idUsuario);
-        contentValues.put("nota",avaliacaoAgilidade);
-
-        return (String) OkHttpController.postHttp(url,contentValues);
+        return (String) OkHttpController.postHttp(url, contentValues);
     }
 
-    public static String enviarAvaliacaoServico(int IdOficina,int avaliacaoServico,int idUsuario)throws IOException{
-        String url="http://doutorcarango.kinghost.net:21015/avaliacoes/servico/cadastrar";
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("id_estabelecimentos",IdOficina);
-        contentValues.put("id_usuarios",idUsuario);
-        contentValues.put("nota",avaliacaoServico);
+    public static String enviarAvaliacaoAgilidade(int IdOficina, int avaliacaoAgilidade, int idUsuario) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/avaliacoes/agilidade/cadastrar";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id_estabelecimentos", IdOficina);
+        contentValues.put("id_usuarios", idUsuario);
+        contentValues.put("nota", avaliacaoAgilidade);
 
-        return (String) OkHttpController.postHttp(url,contentValues);
+        return (String) OkHttpController.postHttp(url, contentValues);
     }
-    public static String enviarComentario(int IdOficina,String comentario,int idUsuario)throws IOException{
-        String url="http://doutorcarango.kinghost.net:21015/funcoes/comentarios/cadastrar";
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("id_estabelecimentos",IdOficina);
-        contentValues.put("id_usuarios",idUsuario);
-        contentValues.put("comentario",comentario);
+
+    public static String enviarAvaliacaoServico(int IdOficina, int avaliacaoServico, int idUsuario) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/avaliacoes/servico/cadastrar";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id_estabelecimentos", IdOficina);
+        contentValues.put("id_usuarios", idUsuario);
+        contentValues.put("nota", avaliacaoServico);
+
+        return (String) OkHttpController.postHttp(url, contentValues);
+    }
+
+    public static String enviarComentario(int IdOficina, String comentario, int idUsuario) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/funcoes/comentarios/cadastrar";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id_estabelecimentos", IdOficina);
+        contentValues.put("id_usuarios", idUsuario);
+        contentValues.put("comentario", comentario);
         contentValues.put("data_hora", Calendar.getInstance().getTime().toString());
 
-        return (String) OkHttpController.postHttp(url,contentValues);
+        return (String) OkHttpController.postHttp(url, contentValues);
     }
 
-    public static String recuperarComentariosParaOficina(int id)throws IOException {
-        String url="http://doutorcarango.kinghost.net:21015/estabelecimentos/comentarios/id_estabelecimentos="+id;
-        return OkHttpController.getHttp(url,null);
+    public static String recuperarComentariosParaOficina(int id) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/estabelecimentos/comentarios/id_estabelecimentos=" + id;
+        return OkHttpController.getHttp(url, null);
     }
 
-    public static String recuperarNomedeUsuario(int idUsuario)throws IOException  {
-        String url="http://doutorcarango.kinghost.net:21015/estabelecimentos/comentarios/id_estabelecimentos=";
-        return OkHttpController.getHttp(url,null);
+    public static String recuperarNomedeUsuario(int idUsuario) throws IOException {
+        String url = "http://doutorcarango.kinghost.net:21015/estabelecimentos/comentarios/id_estabelecimentos=";
+        return OkHttpController.getHttp(url, null);
     }
 }

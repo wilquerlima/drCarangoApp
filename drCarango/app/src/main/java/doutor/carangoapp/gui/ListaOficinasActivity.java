@@ -25,6 +25,7 @@ import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.controller.AdapterOficinas;
 import doutor.carangoapp.controller.AsyncGenerico;
 import doutor.carangoapp.controller.LoaderOficinasList;
+import doutor.carangoapp.controller.Session;
 import doutor.carangoapp.controller.WebServiceController;
 
 public class ListaOficinasActivity extends AppCompatActivity implements View.OnClickListener, AdapterOficinas.OnItemClickListener, LoaderManager.LoaderCallbacks<String> {
@@ -59,6 +60,8 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
         Intent intent = getIntent();
         String title = intent.getStringExtra("categoria");
         String categoria = intent.getStringExtra("categoria");
+
+        String email = Session.loggedUsuario.getEmail();
 
         getCategoriaClicada(categoria);
 

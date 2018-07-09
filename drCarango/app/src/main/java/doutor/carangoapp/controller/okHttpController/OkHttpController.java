@@ -26,9 +26,10 @@ public class OkHttpController {
     public static final MediaType JSON
             = MediaType.parse("application/json");
 
-    public static String postHttp(String url, ContentValues params) {
+    public static String postHttp(String url, ContentValues params) throws IOException {
 
         Object jsonObject = null;
+        Response response = null;
         try {
             OkHttpClient client = new OkHttpClient();
             String container = parseToString(params);
@@ -39,21 +40,20 @@ public class OkHttpController {
                     .post(body)
                     .build();
 
-            Response response;
 
 
             response = client.newCall(request).execute();
-            jsonObject = new JSONObject(response.body().string());
+            //jsonObject = new JSONObject(response.body().string());
             //nome do objeto que vai retornar
 
         } catch (Exception e) {
             Log.d("OKhttpController",e.getMessage());
         }
 
-        return jsonObject.toString();
+        return response.body().string();
 
     }
-    
+
     public static String parseToString(ContentValues c) throws JSONException{
 
         JSONObject object=new JSONObject();

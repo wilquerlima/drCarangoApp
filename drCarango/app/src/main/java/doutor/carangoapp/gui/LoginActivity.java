@@ -1,5 +1,6 @@
 package doutor.carangoapp.gui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -12,7 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import doutor.carangoapp.R;
+import doutor.carangoapp.base.BaseEstabelecimento;
+import doutor.carangoapp.base.BaseUsuario;
+import doutor.carangoapp.controller.AsyncGenerico;
+import doutor.carangoapp.controller.Session;
+import doutor.carangoapp.controller.WebServiceController;
 
 /**
  * Created by wilqu on 25/05/2018.
@@ -25,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edit_email, edit_senha;
 
     private String tipoLogin = "";
+    private String respostaLogin = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,8 +73,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (checkCampos()) {
                     //login sucesso
                     //salvar o usuario logado no Session.logged
-                    startActivity(new Intent(this, SugestoesActivity.class));
-                    finish();
+                    AsyncLogin async1 = new AsyncLogin(LoginActivity.this);
+                    async1.execute();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this).setCancelable(false);
                     builder.setTitle("Ops");
@@ -95,5 +106,112 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         }
         return true;
+    }
+
+    private class AsyncLogin extends AsyncGenerico<Object, Integer, Long> {
+        Activity myActivity;
+
+        public AsyncLogin(Activity activity) {
+            super(activity);
+            this.myActivity = activity;
+
+        }
+
+        @Override
+        protected Long doInBackground(Object... objects) {
+
+            String email = edit_email.getText().toString();
+            String senha = edit_senha.getText().toString();
+
+            try {
+                respostaLogin = WebServiceController.login(email, senha);
+            } catch (Exception e) {
+                alertError(e.getMessage());
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Long aLong) {
+            super.onPostExecute(aLong);
+            if (!respostaLogin.equals("")){
+                if (tipoLogin.equalsIgnoreCase("motorista")) {
+                    Session.loggedUsuario = getLoggedUsuario(respostaLogin);
+                } else {
+                    Session.loggedEstabelecimento = getLoggedOficina(respostaLogin);
+                }
+                startActivity(new Intent(myActivity, SugestoesActivity.class));
+                finish();
+            }else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(myActivity).setCancelable(false);
+                builder.setTitle("Ops");
+                builder.setMessage("Verifique se os dados informados estão corretos.");
+                builder.setNeutralButton("OK", null);
+                builder.show();
+            }
+        }
+    }
+
+    private BaseEstabelecimento getLoggedOficina(String json) {
+        try {
+
+            JSONObject oficina = new JSONObject(json);
+
+            BaseEstabelecimento estabelecimento = new BaseEstabelecimento();
+            estabelecimento.setId(oficina.getInt("id"));
+            estabelecimento.setNome(oficina.getString("nome"));
+            //estabelecimento.setCpf(oficina.getString("cnpj"));
+            //estabelecimento.setEmail(oficina.getString("email"));
+            estabelecimento.setRua(oficina.getString("rua"));
+            estabelecimento.setNumero(oficina.getString("numero"));
+            estabelecimento.setBairro(oficina.getString("bairro"));
+            estabelecimento.setCidade(oficina.getString("cidade"));
+            estabelecimento.setCep(oficina.getString("cep"));
+            estabelecimento.setEstado(oficina.getString("estado"));
+            estabelecimento.setPais(oficina.getString("pais"));
+            estabelecimento.setComplemento(oficina.getString("complemento"));
+            //estabelecimento.setRankingAgilidade(Double.parseDouble(oficina.getString("rankingAgilidade")));
+            //estabelecimento.setRankingCustoBeneficio(Double.parseDouble(oficina.getString("rankingCustoBeneficio")));
+            //estabelecimento.setRankingServico(Double.parseDouble(oficina.getString("rankingServico")));
+            estabelecimento.setNumeroAvaliacoes(Double.parseDouble(oficina.getString("numeroAvaliacoes")));
+            estabelecimento.setNumeroComentarios(Double.parseDouble(oficina.getString("numeroComentarios")));
+            estabelecimento.setNumeroPromocoes(Double.parseDouble(oficina.getString("numeroPromocoes")));
+
+
+            return estabelecimento;
+
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    private BaseUsuario getLoggedUsuario(String json) {
+        try {
+            JSONArray array = new JSONArray(json);
+            JSONObject usuarioJson = new JSONObject(array.getString(0));
+            BaseUsuario usuario = new BaseUsuario();
+
+            usuario.setId(usuarioJson.getInt("id"));
+            usuario.setNome(usuarioJson.getString("nome"));
+            usuario.setEmail(usuarioJson.getString("email"));
+            usuario.setRua(usuarioJson.getString("rua"));
+            usuario.setNumero(usuarioJson.getString("numero"));
+            usuario.setBairro(usuarioJson.getString("bairro"));
+            usuario.setCidade(usuarioJson.getString("cidade"));
+            usuario.setCep(usuarioJson.getString("cep"));
+            usuario.setEstado(usuarioJson.getString("estado"));
+            usuario.setPais(usuarioJson.getString("pais"));
+            usuario.setComplemento(usuarioJson.getString("complemento"));
+            usuario.setTelefone1(usuarioJson.getString("telefone1"));
+            usuario.setTelefone2(usuarioJson.getString("telefone2"));
+
+            return usuario;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
 }
