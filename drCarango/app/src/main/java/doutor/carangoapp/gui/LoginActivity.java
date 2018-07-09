@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -124,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String senha = edit_senha.getText().toString();
 
             try {
-                respostaLogin = WebServiceController.login(email, senha);
+                respostaLogin = WebServiceController.login(email, senha,tipoLogin);
             } catch (Exception e) {
                 alertError(e.getMessage());
             }
@@ -137,10 +138,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (!respostaLogin.equals("[]")){
                 if (tipoLogin.equalsIgnoreCase("motorista")) {
                     Session.loggedUsuario = getLoggedUsuario(respostaLogin);
+                    startActivity(new Intent(myActivity, SugestoesActivity.class));
                 } else {
                     Session.loggedEstabelecimento = getLoggedOficina(respostaLogin);
+                    startActivity(new Intent(myActivity,PerfilUsuarioOficinaActivity.class));
                 }
-                startActivity(new Intent(myActivity, SugestoesActivity.class));
+
                 finish();
             }else{
                 AlertDialog.Builder builder = new AlertDialog.Builder(myActivity).setCancelable(false);
@@ -155,7 +158,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private BaseEstabelecimento getLoggedOficina(String json) {
         try {
 
-            JSONObject oficina = new JSONObject(json);
+            JSONArray array=new JSONArray(json);
+            JSONObject oficina = new JSONObject(array.get(0).toString());
 
             BaseEstabelecimento estabelecimento = new BaseEstabelecimento();
             estabelecimento.setId(oficina.getInt("id"));
@@ -181,6 +185,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return estabelecimento;
 
         } catch (Exception e) {
+            Log.d("ErrologingOficina",e.getMessage());
             return null;
         }
 

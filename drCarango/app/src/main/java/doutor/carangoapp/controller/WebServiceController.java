@@ -43,8 +43,14 @@ public class WebServiceController {
         return OkHttpController.postHttp(url, contentValues);
     }
 
-    public static String login(String email, String senha) throws IOException {
-        String url = "http://doutorcarango.kinghost.net:21015/usuarios/login";
+    public static String login(String email, String senha,String tipoLogin) throws IOException {
+        String url="";
+        if(tipoLogin.equalsIgnoreCase("motorista")){
+            url= "http://doutorcarango.kinghost.net:21015/usuarios/login";
+        }else{
+            url="http://doutorcarango.kinghost.net:21015/estabelecimentos/login";
+        }
+
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);

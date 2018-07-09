@@ -7,28 +7,29 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
 
 import doutor.carangoapp.R;
 import doutor.carangoapp.controller.AdapterHistoricoServicosUsuario;
+import doutor.carangoapp.controller.Session;
 
 public class PrefilUsuarioActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private AdapterHistoricoServicosUsuario mAdapterServicos;
     private String mNomeUsario;
+    private TextView tv_Usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(savedInstanceState!=null){
-            mNomeUsario=savedInstanceState.getString("NOME_USUARIO");
-        }
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_perfil);
-
         LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
-        mRecyclerView=findViewById(R.id.rv_servicos_realizados_perfil_usuario);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(this.mAdapterServicos);
+        tv_Usuario=findViewById(R.id.tv_nome_usuario_perfil);
+        mNomeUsario= Session.loggedUsuario.getNome();
+        tv_Usuario.setText(mNomeUsario);
+
 
     }
 

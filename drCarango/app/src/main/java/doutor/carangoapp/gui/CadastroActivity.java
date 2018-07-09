@@ -188,7 +188,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             String senha = edit_senha.getText().toString();
 
             try {
-                respostaLogin = WebServiceController.login(email, senha);
+                respostaLogin = WebServiceController.login(email, senha,tipoLogin);
             } catch (Exception e) {
                 alertError(e.getMessage());
             }
