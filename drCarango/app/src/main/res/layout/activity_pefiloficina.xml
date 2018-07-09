@@ -281,10 +281,10 @@
 
         <Button
             android:id="@+id/btn_abrir_maps_perfil_oficina"
+            style="@style/btn_introducao_oficina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            style="@style/btn_introducao_oficina"
             android:layout_toEndOf="@+id/btn_entrar_contato_perfil_oficina"
             android:padding="5dp"
             android:text="Abrir no Maps"

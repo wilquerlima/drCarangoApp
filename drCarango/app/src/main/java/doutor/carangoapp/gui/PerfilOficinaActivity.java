@@ -243,7 +243,7 @@ public class PerfilOficinaActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private ArrayList<BaseComentario> getComentariosFromJson(String jsonResponse) throws IOException,JSONException {
+    public static  ArrayList<BaseComentario> getComentariosFromJson(String jsonResponse) throws IOException,JSONException {
         ArrayList<BaseComentario> comentarios=new ArrayList<>();
 
         JSONArray jsonComentarios=new JSONArray(jsonResponse);
