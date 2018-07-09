@@ -134,7 +134,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         protected void onPostExecute(Long aLong) {
             super.onPostExecute(aLong);
-            if (!respostaLogin.equals("")){
+            if (!respostaLogin.equals("[]")){
                 if (tipoLogin.equalsIgnoreCase("motorista")) {
                     Session.loggedUsuario = getLoggedUsuario(respostaLogin);
                 } else {

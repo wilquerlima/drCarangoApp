@@ -24,6 +24,7 @@ import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseEstabelecimento;
 import doutor.carangoapp.base.BaseUsuario;
 import doutor.carangoapp.controller.AsyncGenerico;
+import doutor.carangoapp.controller.Mask;
 import doutor.carangoapp.controller.Session;
 import doutor.carangoapp.controller.WebServiceController;
 import doutor.carangoapp.controller.okHttpController.OkHttpController;
@@ -62,6 +63,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         if (tipoLogin.equalsIgnoreCase("oficina")) {
             edit_nome.setHint("Nome do estabelecimento");
         }
+        edit_telefone.addTextChangedListener(Mask.insert("(##) #####-####",edit_telefone));
     }
 
 
@@ -196,7 +198,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPostExecute(Long aLong) {
             super.onPostExecute(aLong);
-            if (!respostaLogin.equals("")) {
+            if (!respostaLogin.equals("[]")) {
                 if (tipoLogin.equalsIgnoreCase("motorista")) {
                     Session.loggedUsuario = getLoggedUsuario(respostaLogin);
                 } else {
