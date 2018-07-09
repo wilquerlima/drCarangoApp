@@ -61,7 +61,7 @@
                     android:textOff="@string/agilidade"
                     android:textOn="@string/agilidade" />
             </LinearLayout>
-
+       
 
         </android.support.v7.widget.CardView>
     </RelativeLayout>

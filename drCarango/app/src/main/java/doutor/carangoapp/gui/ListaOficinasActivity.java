@@ -39,6 +39,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
     private static String mCategoria;
     private static String mRanking = "1";
 
+
     private String jsonString;
     private ArrayList<BaseEstabelecimento> arrayOficinas;
 
@@ -181,7 +182,7 @@ public class ListaOficinasActivity extends AppCompatActivity implements View.OnC
                 mRanking = "2";
                 break;
             case R.id.btn_agilidade:
-                //codigopara ordenar lista por agilidade
+                //codigo para ordenar lista por agilidade
                 mButtonViewPreco.setChecked(false);
                 mButtonViewDistancia.setChecked(false);
                 mRanking = "1";

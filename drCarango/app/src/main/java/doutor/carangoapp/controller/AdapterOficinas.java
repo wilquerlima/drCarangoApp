@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 import doutor.carangoapp.R;
+import doutor.carangoapp.base.BaseDistancia;
 import doutor.carangoapp.base.BaseEstabelecimento;
 
 
@@ -64,10 +65,9 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
 
         holder.getmNomeOficina().setText(oficina.getNome());
         holder.getmMediaAvaliacoes().setText(Double.toString(oficina.getRankingServico()));
-        //holder.getmNumeroComentarios().setText(" (" + r.nextInt(100) + ")");
         holder.getmNumeroComentarios().setText(Double.toString(oficina.getNumeroComentarios()));
         holder.getmNumeroAvaliacoes().setText(Double.toString(oficina.getNumeroAvaliacoes()));
-
+        holder.mDistancia.setText(Double.toString(BaseDistancia.distancias[oficina.getId()])+" KM");
         //gera randomicamente cor para circulo na view
         GradientDrawable background = (GradientDrawable) holder.getmCircleOficinaList().getBackground();
         background.setColor(Color.argb(255, r.nextInt(256), r.nextInt(256), r.nextInt(256)));
@@ -89,6 +89,7 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
         private TextView mMediaAvaliacoes;
         private View mPromocao;
         private View mOficinaParceira;
+        private TextView mDistancia;
 
 
         public OficinasViewHolder(View itemView) {
@@ -101,6 +102,7 @@ public class AdapterOficinas extends RecyclerView.Adapter<AdapterOficinas.Oficin
             mPromocao = itemView.findViewById(R.id.v_promocao);
             mMediaAvaliacoes = itemView.findViewById(R.id.tv_media_avaliacoes);
             mOficinaParceira = itemView.findViewById(R.id.ic_parceira_oficina_lista);
+            mDistancia=itemView.findViewById(R.id.tv_distancia);
             itemView.setOnClickListener(this);
 
         }
