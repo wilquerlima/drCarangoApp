@@ -63,6 +63,48 @@
             </LinearLayout>
 
 
+       <ImageView
+           android:id="@+id/iv_filter_icon"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_margin="5dp"
+           android:contentDescription="filter"
+           android:src="@mipmap/ic_filter" />
+       <ToggleButton
+           android:id="@+id/btn_preco"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textOn="@string/preco"
+           android:textOff="@string/preco"
+           android:layout_toEndOf="@id/iv_filter_icon"
+           android:background="@drawable/btn_filter_preco"
+           android:layout_margin="7dp"
+           android:textColor="@color/color_toogle_text_preco"
+           />
+
+       <ToggleButton
+           android:id="@+id/btn_distancia"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_margin="7dp"
+           android:layout_toEndOf="@id/btn_preco"
+           android:background="@drawable/btn_filter_distancia"
+           android:textColor="@color/color_toggle_text_distancia"
+           android:textOff="@string/distancia"
+           android:textOn="@string/distancia" />
+       <ToggleButton
+           android:id="@+id/btn_agilidade"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textOn="@string/agilidade"
+           android:textOff="@string/agilidade"
+           android:layout_toEndOf="@id/btn_distancia"
+           android:background="@drawable/btn_filter_agilidade"
+           android:layout_margin="7dp"
+           android:textColor="@color/color_toggle_text_agilidade"
+           />
+
+
         </android.support.v7.widget.CardView>
     </RelativeLayout>
 

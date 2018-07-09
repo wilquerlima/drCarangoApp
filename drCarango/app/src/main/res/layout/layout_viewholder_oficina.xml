@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_nome_oficina"
             android:layout_margin="6dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_toEndOf="@id/tv_media_avaliacoes"
             android:text="300"
             android:textSize="14sp" />
@@ -107,6 +107,18 @@
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/iv_avaliacoes_estrelas"
             android:background="@drawable/promo_icon" />
+
+        <TextView
+            android:id="@+id/tv_distancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nome_oficina"
+            android:layout_margin="10dp"
+
+
+            android:layout_toEndOf="@+id/tv_numero_comentarios"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>
 

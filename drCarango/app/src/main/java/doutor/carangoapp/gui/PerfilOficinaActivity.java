@@ -2,6 +2,8 @@ package doutor.carangoapp.gui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 import doutor.carangoapp.R;
 import doutor.carangoapp.base.BaseComentario;
 import doutor.carangoapp.base.BaseEstabelecimento;
+import doutor.carangoapp.base.BaseFotos;
 import doutor.carangoapp.base.BaseUsuario;
 import doutor.carangoapp.base.testeServidor;
 import doutor.carangoapp.controller.AdapterComentsOficina;
@@ -36,6 +39,7 @@ import doutor.carangoapp.controller.WebServiceController;
 
 public class PerfilOficinaActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private View mFotoOficina;
     private View iv_promocao_icone;
     private View iv_icone_parceira;
     private TextView tv_NomeNoficina;
@@ -65,6 +69,9 @@ public class PerfilOficinaActivity extends AppCompatActivity implements View.OnC
 
         AsyncComentarios async = new AsyncComentarios(this);
         async.execute();
+        mFotoOficina=findViewById(R.id.v_foto_oficina);
+        mFotoOficina.setBackgroundResource(BaseFotos.getFoto(mOficina.getId()));
+
         tv_oficina_parceira=findViewById(R.id.tv_oficina_parceira);
         iv_icone_parceira=findViewById(R.id.iv_oficina_parceira_perfil);
         iv_promocao_icone=findViewById(R.id.iv_ic_promo_perfil_oficina);
